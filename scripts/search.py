@@ -1,9 +1,7 @@
 import numpy as np
+import sys 
 
-def hello_world():
-    arr = np.zeros(5)
-    hello = "hello"
-    world = "world"
-    return hello + " " + world + " " + str(arr.size)
+def format_input(food, mood, nutri):
+	return food + " " + mood + " " + nutri
 
-print hello_world()
+print format_input(sys.argv[1], sys.argv[2], sys.argv[3])
