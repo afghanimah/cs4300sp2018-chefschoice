@@ -1,8 +1,8 @@
 <!-- Submits queries to Spoonacular API -->
 
 <?php
-	require_once "../vendor/autoload.php";
-	include ('../src/SpoonacularAPIClient.php');
+	require_once "vendor/autoload.php";
+	include ('src/SpoonacularAPIClient.php');
 	use SpoonacularAPILib\SpoonacularAPIClient;
 
 	// Configuration parameters
@@ -18,10 +18,32 @@
 		$mood = filter_input(INPUT_POST, 'input-mood', FILTER_SANITIZE_STRING);
 		$nutrients = filter_input(INPUT_POST, 'input-nutri', FILTER_SANITIZE_STRING);
 
-		echo shell_exec('python scripts/search.py '.$food.' '.$mood.' '.$nutrients);
+		// echo shell_exec('python scripts/search.py '.$food.' '.$mood.' '.$nutrients);
+
+
+		// Query the API
+		$query = $nutrients;
+		$cuisine = 'italian';
+		$diet = 'vegetarian';
+		$excludeIngredients = 'coconut';
+		$intolerances = 'egg, gluten';
+		$limitLicense = false;
+		$number = 20;
+		$offset = 0;
+		$type = 'main course';
+		// key-value map for optional query parameters
+		$queryParams = array('key' => 'value');
+
+		$results = json_decode(json_encode($client->searchRecipes($query)), true);
+
+
+		foreach ($results["results"] as $result => $data) {
+			echo $data["title"];
+		}
+
 	}
 
-	$result = $client->searchRecipes($query, $cuisine, $diet, $excludeIngredients, $intolerances, $limitLicense, $number, $offset, $type, $queryParams);
+	
 
 
 
