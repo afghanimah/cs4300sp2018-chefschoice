@@ -7,7 +7,7 @@ include ('../src/SpoonacularAPIClient.php');
 use SpoonacularAPILib\SpoonacularAPIClient;
 
 // Configuration parameters
-$xMashapeKey = "xk1HGDFa1NmshAMfSgYD3ZI6PKUyp1TpWnUjsnHdp9TkMEv0Gg"; // The Mashape application you want to use for this session.
+$xMashapeKey = ""; // The Mashape application you want to use for this session.
 $client = new SpoonacularAPIClient($xMashapeKey);
 
 // $ppl = new SpoonacularAPIClient("Johanna");
