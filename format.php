@@ -6,6 +6,7 @@
 	use SpoonacularAPILib\SpoonacularAPIClient;
 
 	// Configuration parameters
+	// Instructions: replace getenv("API_KEY") with the api key for local testing and change back for public
 	$xMashapeKey = getenv("API_KEY"); // The Mashape application you want to use for this session.
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
