@@ -10,12 +10,6 @@ use SpoonacularAPILib\SpoonacularAPIClient;
 $xMashapeKey = "xk1HGDFa1NmshAMfSgYD3ZI6PKUyp1TpWnUjsnHdp9TkMEv0Gg"; // The Mashape application you want to use for this session.
 $client = new SpoonacularAPIClient($xMashapeKey);
 
-if (file_exists("../src/SpoonacularAPIClient.php")) {
-    echo "if </br>";
-} else {
-  echo "else";
-}
-
 // $ppl = new SpoonacularAPIClient("Johanna");
 $client = $client->getClient();
 
