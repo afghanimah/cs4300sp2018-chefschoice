@@ -1,3 +1,4 @@
+# makes calls to database
 import numpy as np
 import sys 
 

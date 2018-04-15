@@ -1,3 +1,5 @@
+<!-- Submits queries to Spoonacular API -->
+
 <?php
 
 	if ($_POST['submit-query']) {

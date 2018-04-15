@@ -1,3 +1,4 @@
+<!-- Main Page -->
 <?php include('includes/init.php'); ?>
 
 <!DOCTYPE html>
