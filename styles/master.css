@@ -2,3 +2,9 @@ input.search-input {
 	display: block;
 	margin-bottom: 1%;
 }
+
+#projectInfo {
+	position: absolute;
+	top: 1%;
+	right: 1%;
+}

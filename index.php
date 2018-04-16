@@ -26,5 +26,12 @@
 			<input type="submit" name="submit-query">
 		</form>
 
+		<div id="projectInfo">
+			<p><b>Chef's Choice</b></p>
+			<p>Abraham Ghanimah (afg63)</p>
+			<p>Abrahm Magaña (adm264)</p>
+			<p>Oscar Barazza (odb5)</p>
+			<p>Johanna Smith-Palliser (jls628)</p>
+		</div>
 	</body>
 </html>
