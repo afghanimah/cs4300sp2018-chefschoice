@@ -39,12 +39,12 @@
 
 
 		foreach ($results["results"] as $result => $data) {
-			echo $data["title"];
+			echo $data["title"] . "<br>";
 		}
 
 	}
 
-	
+
 
 
 
