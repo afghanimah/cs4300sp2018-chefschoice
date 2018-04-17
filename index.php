@@ -13,7 +13,7 @@
 	</header>
 
 	<body>
-
+		<h1>Chef's Choice</h1>
 		<form method="post" action="format.php">
 			<input class="search-input" type="POST" name="input-mood"
 			placeholder="Enter a Mood">
