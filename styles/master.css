@@ -19,8 +19,23 @@ input.search-input {
 	top: 1%;
 	right: 1%;
 }
-h1 {
-	font-size: 90px;
-	color: white;
+
+#contentContainer {
+	background: rgba(255, 255, 255, 0.6);
+	width: 50%;
+	border-radius: 10px;
 }
+#content {
+	margin:10px;
+	padding-bottom: 10px;
+}
+
+#content h1 {
+	font-size: 90px;
+	font-weight: bold;
+	color: black;
+}
+
+
+
 

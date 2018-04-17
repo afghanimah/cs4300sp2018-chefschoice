@@ -13,18 +13,22 @@
 	</header>
 
 	<body>
-		<h1>Chef's Choice</h1>
-		<form method="post" action="format.php">
-			<input class="search-input" type="POST" name="input-mood"
-			placeholder="Enter a Mood">
+		<div id='contentContainer'>
+			<div id='content'>
+				<h1>Chef's Choice</h1>
+				<form method="post" action="format.php">
+					<input class="search-input" type="POST" name="input-mood"
+					placeholder="Enter a Mood">
 
-			<input class="search-input" type="POST" name="input-food" placeholder="Enter a Food">
+					<input class="search-input" type="POST" name="input-food" placeholder="Enter a Food">
 
-			<input class="search-input" type="POST" name="input-nutri"
-			placeholder="Enter a Nutrient">
+					<input class="search-input" type="POST" name="input-nutri"
+					placeholder="Enter a Nutrient">
 
-			<input type="submit" name="submit-query">
-		</form>
+					<input type="submit" name="submit-query">
+				</form>
+			</div>
+	</div>
 
 		<div id="projectInfo">
 			<p><b>Chef's Choice</b></p>
