@@ -1,4 +1,26 @@
+html {
+	height:100%;
+	width: 100%;
+}
+body {
+	/* Image source: https://www.nytimes.com/2018/03/12/dining/filipino-cooking.html */
+	background-image: url(../images/foodTable.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 input.search-input {
 	display: block;
 	margin-bottom: 1%;
 }
+
+#projectInfo {
+	color: white;
+	position: absolute;
+	top: 1%;
+	right: 1%;
+}
+h1 {
+	font-size: 90px;
+	color: white;
+}
+
