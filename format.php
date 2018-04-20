@@ -5,9 +5,11 @@
 	include ('src/SpoonacularAPIClient.php');
 	use SpoonacularAPILib\SpoonacularAPIClient;
 
+
+	$APIkey = "xk1HGDFa1NmshAMfSgYD3ZI6PKUyp1TpWnUjsnHdp9TkMEv0Gg";
 	// Configuration parameters
 	// Instructions: replace getenv("API_KEY") with the api key for local testing and change back for public
-	$xMashapeKey = getenv("API_KEY"); // The Mashape application you want to use for this session.
+	$xMashapeKey = $APIkey; // The Mashape application you want to use for this session.
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
 	// $ppl = new SpoonacularAPIClient("Johanna");
@@ -17,35 +19,25 @@
 	if ($_POST['submit-query']) {
 		$food = filter_input(INPUT_POST, 'input-food', FILTER_SANITIZE_STRING);
 		$mood = filter_input(INPUT_POST, 'input-mood', FILTER_SANITIZE_STRING);
-		$nutrients = filter_input(INPUT_POST, 'input-nutri', FILTER_SANITIZE_STRING);
-
-		// echo shell_exec('python scripts/search.py '.$food.' '.$mood.' '.$nutrients);
+		$query = filter_input(INPUT_POST, 'input-nutri', FILTER_SANITIZE_STRING);
 
 
-		// Query the API
-		$query = $nutrients;
-		$cuisine = 'italian';
-		$diet = 'vegetarian';
-		$excludeIngredients = 'coconut';
-		$intolerances = 'egg, gluten';
-		$limitLicense = false;
-		$number = 20;
-		$offset = 0;
-		$type = 'main course';
-		// key-value map for optional query parameters
-		$queryParams = array('key' => 'value');
+		//standard link for unirest request
+		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?";
 
-		$results = json_decode(json_encode($client->searchRecipes($query)), true);
+		// These code snippets use an open-source library. http://unirest.io/php
+		$response = Unirest\Request::get($getRequestLink."query=".$query,
+			  array(
+			    "X-Mashape-Key" => $APIkey,
+			    "Accept" => "application/json"
+			  ));
 
+		//encodes unirest object to json for iteration purposes
+ 		$parsedResponse = json_decode(json_encode($response->body), true);
 
-		foreach ($results["results"] as $result => $data) {
-			echo $data["title"];
-		}
-
+		//displays results from query
+		foreach($parsedResponse["results"] as $item) {
+			echo $item["title"]."<br>";
+		};
 	}
-
-	
-
-
-
 ?>
