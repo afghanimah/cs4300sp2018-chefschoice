@@ -12,8 +12,10 @@
 
 	  <title>Chef's Choice</title>
 	</header>
-
 	<body>
+		<div>
+
+		</div>
 		<div id='contentContainer'>
 			<div id='content'>
 				<h1>Chef's Choice</h1>
@@ -30,6 +32,11 @@
 				</form>
 			</div>
 		</div>
-		<?php include('format.php');?>
+		<div id="results">
+			<?php include('format.php');?>
+
+		</div>
+
+		
 	</body>
 </html>

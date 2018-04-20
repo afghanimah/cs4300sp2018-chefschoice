@@ -4,6 +4,12 @@ html {
 	font-family: "Source Sans Pro";
 }
 
+body{
+	/* Image citation: http://s1.1zoom.net/big0/244/Meat_products_Roast_457899.jpg */
+	background-image: url(../images/background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover; 
+}
 
 h1 {
 	font-family: "Playfair Display";
