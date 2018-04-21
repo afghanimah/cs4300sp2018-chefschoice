@@ -32,8 +32,55 @@
 			  ));
 
 		//encodes unirest object to json for iteration purposes
- 		$parsedResponse = json_decode(json_encode($response->body), true);
+		 $parsedResponse = json_decode(json_encode($response->body), true);
 
+		//  Variable for the comparison score
+		 $score = 0.3;
+		 ?>
+		 <div id="dashboard">
+				<div id="userFoodRatingContainer"></div>
+					<script>
+						var colorScale = d3.scaleSequential(d3.interpolateRdYlGn);
+						var userFoodRatingHeight = 350;
+						var userFoodRatingWidth = 350;
+						var userFoodRatingSVG = d3.select("#userFoodRatingContainer").append("svg")
+																			.attr("height", userFoodRatingHeight)
+																			.attr("width", userFoodRatingWidth);
+
+						userFoodRatingSVG.append("circle")
+						.attr("cx", userFoodRatingHeight/2)
+						.attr("cy", userFoodRatingWidth/2)
+						.attr("r", 150)
+						.style("fill", colorScale(<?php echo $score; ?>));
+
+						userFoodRatingSVG.append("text")
+						.attr("x", userFoodRatingHeight/2)
+						.attr("y", userFoodRatingWidth/2)
+						.text(<?php echo $score*100; ?>+"%")
+						.style("alignment-baseline", "middle")
+						.style("text-anchor", "middle")
+			  			.attr("font-family", "sans serif")
+						.attr("font-size", "80px")
+						.attr("fill", "white");
+					</script>
+				<div id="userFoodNutrientsContainer"></div>
+				<div id="userFoodOptimalMoodContainer"></div>
+				<script>
+						var userFoodOptimalMoodHeight = 350;
+						var userFoodOptimalMoodWidth = 350;
+						var userFoodOptimalMoodSVG = d3.select("#userFoodOptimalMoodContainer").append("svg")
+																			.attr("height", userFoodOptimalMoodHeight)
+																			.attr("width", userFoodOptimalMoodWidth);
+
+						userFoodOptimalMoodSVG.append("circle")
+						.attr("cx", userFoodRatingHeight/2)
+						.attr("cy", userFoodRatingWidth/2)
+						.attr("r", 150)
+						.style("fill", "white");
+					</script>
+			</div> 
+
+		<?php
 		//displays results from query
 		foreach($parsedResponse["results"] as $item) {
 			echo $item["title"]."<br>";
