@@ -1,5 +1,4 @@
-<!-- Submits queries to Spoonacular API -->
-
+<!-- Submits queries to Spoonacular API and displays results -->
 <?php
 	require_once "vendor/autoload.php";
 	include ('src/SpoonacularAPIClient.php');
@@ -9,23 +8,31 @@
 	use SpoonacularAPILib\SpoonacularAPIClient;
 	// Configuration parameters
 	$xMashapeKey = $API_KEY; // The Mashape application you want to use for this session.
+<<<<<<< HEAD
+=======
+
+>>>>>>> cbf011bc51814fd0df90832a0115570c750277bf
 	$client = new SpoonacularAPIClient($xMashapeKey);
+
 
 	// $ppl = new SpoonacularAPIClient("Johanna");
 	$client = $client->getClient();
 
 
 	if ($_POST['submit-query']) {
-		$food = filter_input(INPUT_POST, 'input-food', FILTER_SANITIZE_STRING);
-		$mood = filter_input(INPUT_POST, 'input-mood', FILTER_SANITIZE_STRING);
-		$query = filter_input(INPUT_POST, 'input-nutri', FILTER_SANITIZE_STRING);
+		$foodInput = filter_input(INPUT_POST, 'input-food', FILTER_SANITIZE_STRING);
+		$moodInput = filter_input(INPUT_POST, 'input-mood', FILTER_SANITIZE_STRING);
+    $nutrientsInput = filter_input(INPUT_POST, 'input-nutrient', FILTER_SANITIZE_STRING);
+    $restrictionsInput = filter_input(INPUT_POST, 'input-restriction', FILTER_SANITIZE_STRING);
+    // $cuisinesInput = $_POST["input-cuisine"];
 
 
 		//standard link for unirest request
 		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?";
 
 		// These code snippets use an open-source library. http://unirest.io/php
-		$response = Unirest\Request::get($getRequestLink."query=".$query,
+		$response = Unirest\Request::get(
+			$getRequestLink."query=".$foodInput."&number=".$number,
 			  array(
 			    "X-Mashape-Key" => $API_KEY,
 			    "Accept" => "application/json"
@@ -80,10 +87,15 @@
 					</script>
 			</div> 
 
+<<<<<<< HEAD
 		<?php
+=======
+		$i = 0;
+>>>>>>> cbf011bc51814fd0df90832a0115570c750277bf
 		//displays results from query
 		foreach($parsedResponse["results"] as $item) {
-			echo $item["title"]."<br>";
+			$i+=1;
+			echo $i." ".$item["title"]."<br>";
 		};
 	}
 ?>

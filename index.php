@@ -42,12 +42,40 @@
 			</form>
 
 		</div>
+<<<<<<< HEAD
 	</div>
 	<div id="results">
 		<?php include('format.php');?>
 
 	</div>
 
+=======
+		<div id='contentContainer'>
+			<div id='content'>
+				<h1>Chef's Choice</h1>
+				<form method="post" action="index.php">
+					<!-- Mood -->
+					<input class="search-input" type="POST" name="input-mood"
+					placeholder="Enter a Mood">
+					<!-- Food -->
+					<input class="search-input" type="POST" name="input-food" placeholder="Enter a Food">
+					<!-- Nutrient (separated by commas)-->
+					<input class="search-input" type="POST" name="input-nutrient"
+					placeholder="Enter a Nutrient">
+					<!-- Restrictions (separated by commas) -->
+					<input class="search-input" type="POST" name="input-restriction" placeholder="Enter Dietary Restrictions">
+					<!-- Cuisines (dropdown list) -->
+					<input class="search-input" type="POST" name="input-cuisine" placeholder="Enter a Cuisine">
+					<!-- Submit -->
+					<input type="submit" name="submit-query" placeholder="Submit">
+				</form>
+			</div>
+		</div>
+		<div id="results">
+			<?php include('format.php');?>
+
+		</div>
+>>>>>>> cbf011bc51814fd0df90832a0115570c750277bf
 
 </body>
 </html>

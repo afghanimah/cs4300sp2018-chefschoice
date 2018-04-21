@@ -1,6 +1,18 @@
 # makes calls to database
 import numpy as np
-import sys 
+import sys
+
+moods = {
+	'anger': 'magnesium',
+	'disgust': 'omega 3',
+	'fear': 'tryptophan',
+	'lazy': 'caffeine',
+	'surprise': 'manganese',
+	'sadness': 'vitamin d',
+	'joy': 'vitamin b6',
+}
+
+
 
 def format_input(food, mood, nutri):
 	return food + " " + mood + " " + nutri
