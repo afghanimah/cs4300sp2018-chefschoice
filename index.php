@@ -18,15 +18,20 @@
 			<div id='content'>
 				<h1>Chef's Choice</h1>
 				<form method="post" action="index.php">
+					<!-- Mood -->
 					<input class="search-input" type="POST" name="input-mood"
 					placeholder="Enter a Mood">
-
+					<!-- Food -->
 					<input class="search-input" type="POST" name="input-food" placeholder="Enter a Food">
-
-					<input class="search-input" type="POST" name="input-nutri"
+					<!-- Nutrient (separated by commas)-->
+					<input class="search-input" type="POST" name="input-nutrient"
 					placeholder="Enter a Nutrient">
-
-					<input type="submit" name="submit-query">
+					<!-- Restrictions (separated by commas) -->
+					<input class="search-input" type="POST" name="input-restriction" placeholder="Enter Dietary Restrictions">
+					<!-- Cuisines (dropdown list) -->
+					<input class="search-input" type="POST" name="input-cuisine" placeholder="Enter a Cuisine">
+					<!-- Submit -->
+					<input type="submit" name="submit-query" placeholder="Submit">
 				</form>
 			</div>
 		</div>
