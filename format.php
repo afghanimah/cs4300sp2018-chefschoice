@@ -25,7 +25,7 @@
 		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?";
 
 		// These code snippets use an open-source library. http://unirest.io/php
-		$response = Unirest\Request::get($getRequestLink."query=".$query,
+		$response = Unirest\Request::get($getRequestLink."query=".$food,
 			  array(
 			    "X-Mashape-Key" => $API_KEY,
 			    "Accept" => "application/json"
@@ -78,7 +78,7 @@
 						.attr("r", 150)
 						.style("fill", "white");
 					</script>
-			</div> 
+			</div>
 
 		<?php
 		//displays results from query
