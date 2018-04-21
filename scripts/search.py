@@ -4,11 +4,12 @@ import sys
 
 moods = {
 	'anger': 'magnesium',
-	 'disgust': 'omega 3',
-	 'fear': 'tryptophan'
-	 'surprise': 'manganese'
-	 'sadness': 'vitamin d'
-	 'joy': 'vitamin b6'
+	'disgust': 'omega 3',
+	'fear': 'tryptophan',
+	'lazy': 'caffeine',
+	'surprise': 'manganese',
+	'sadness': 'vitamin d',
+	'joy': 'vitamin b6',
 }
 
 
