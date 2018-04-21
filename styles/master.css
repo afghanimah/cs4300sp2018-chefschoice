@@ -44,3 +44,23 @@ input.search-input {
 	font-weight: bold;
 	color: black;
 }
+
+#dashboard {
+	height: 500px;
+	width: 100%;
+	float: right;
+}
+
+#userFoodRatingContainer, #userFoodNutrientsContainer, #userFoodOptimalMoodContainer {
+	display: inline-block;
+	height: 350px;
+	width: 33%;
+}
+
+#userFoodRatingContainer {
+	
+}
+
+#userFoodNutrientsContainer {
+	background: rgba(255, 255, 255, 0.6);
+}

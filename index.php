@@ -9,6 +9,7 @@
 	  <meta name="viewport" content="width=device-width, initial-scale=1" />
 	  <link rel="stylesheet" type="text/css" href="styles/master.css" media="all"/>
 		<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:200" rel="stylesheet">
+		<script src="https://d3js.org/d3.v5.min.js"></script>
 
 	  <title>Chef's Choice</title>
 	</header>
