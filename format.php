@@ -2,14 +2,12 @@
 <?php
 	require_once "vendor/autoload.php";
 	include ('src/SpoonacularAPIClient.php');
+	include ("includes/apikey.php");
+
 	use SpoonacularAPILib\SpoonacularAPIClient;
+	// Configuration parameters
+	$xMashapeKey = $API_KEY; // The Mashape application you want to use for this session.
 
-
-	$APIkey = "xk1HGDFa1NmshAMfSgYD3ZI6PKUyp1TpWnUjsnHdp9TkMEv0Gg";
-	// Number of results to return from query [0-100]
-	$number = 100;
-	// Instructions: replace getenv("API_KEY") with the api key for local testing and change back for public
-	$xMashapeKey = $APIkey;
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
 
@@ -32,7 +30,7 @@
 		$response = Unirest\Request::get(
 			$getRequestLink."query=".$foodInput."&number=".$number,
 			  array(
-			    "X-Mashape-Key" => $APIkey,
+			    "X-Mashape-Key" => $API_KEY,
 			    "Accept" => "application/json"
 			  ));
 
