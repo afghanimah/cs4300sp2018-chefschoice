@@ -43,11 +43,11 @@
 
 		</div>
 	</div>
+	
 	<div id="results">
 		<?php include('format.php');?>
 
 	</div>
-
 
 </body>
 </html>
