@@ -36,6 +36,8 @@
 					</div>.
 				</div>
 
+				<input type="submit" name="submit" id="submit-butt"/>
+
 			</form>
 
 		</div>
