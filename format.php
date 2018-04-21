@@ -3,13 +3,12 @@
 <?php
 	require_once "vendor/autoload.php";
 	include ('src/SpoonacularAPIClient.php');
+	include ("includes/apikey.php");
+
+
 	use SpoonacularAPILib\SpoonacularAPIClient;
-
-
-	$APIkey = "xk1HGDFa1NmshAMfSgYD3ZI6PKUyp1TpWnUjsnHdp9TkMEv0Gg";
 	// Configuration parameters
-	// Instructions: replace getenv("API_KEY") with the api key for local testing and change back for public
-	$xMashapeKey = $APIkey; // The Mashape application you want to use for this session.
+	$xMashapeKey = $API_KEY; // The Mashape application you want to use for this session.
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
 	// $ppl = new SpoonacularAPIClient("Johanna");
@@ -28,7 +27,7 @@
 		// These code snippets use an open-source library. http://unirest.io/php
 		$response = Unirest\Request::get($getRequestLink."query=".$query,
 			  array(
-			    "X-Mashape-Key" => $APIkey,
+			    "X-Mashape-Key" => $API_KEY,
 			    "Accept" => "application/json"
 			  ));
 
