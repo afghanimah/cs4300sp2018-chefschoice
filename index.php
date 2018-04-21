@@ -37,17 +37,17 @@
 					</div>.
 				</div>
 
-				<input type="submit" name="submit" id="submit-butt"/>
+				<input type="submit" name="submit-query" id="submit-butt"/>
 
 			</form>
 
 		</div>
 	</div>
+	
 	<div id="results">
 		<?php include('format.php');?>
 
 	</div>
-
 
 </body>
 </html>
