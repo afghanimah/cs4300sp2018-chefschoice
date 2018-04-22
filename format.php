@@ -38,7 +38,7 @@
 		 $parsedResponse = json_decode(json_encode($response->body), true);
 
 		//  Variable for the comparison score
-		 $score = 0.3;
+		 $score = 0.7;
 		 ?>
 		 <div id="dashboard">
 				<div id="userFoodRatingContainer"></div>
@@ -62,11 +62,13 @@
 						.text(<?php echo $score*100; ?>+"%")
 						.style("alignment-baseline", "middle")
 						.style("text-anchor", "middle")
-			  			.attr("font-family", "sans serif")
+			  			.attr("font-family", "Source Sans Pro")
 						.attr("font-size", "80px")
 						.attr("fill", "white");
 					</script>
-				<div id="userFoodNutrientsContainer"></div>
+				<div id="userFoodNutrientsContainer">
+					<h2>Nutrients in <span id="foodInput"><?php echo $foodInput;?></span> Include: </h2>
+				</div>
 				<div id="userFoodOptimalMoodContainer"></div>
 				<script>
 						var userFoodOptimalMoodHeight = 350;
@@ -76,6 +78,7 @@
 																			.attr("width", userFoodOptimalMoodWidth);
 
 						userFoodOptimalMoodSVG.append("circle")
+						.attr("class", "userFoodOptimalMood")
 						.attr("cx", userFoodRatingHeight/2)
 						.attr("cy", userFoodRatingWidth/2)
 						.attr("r", 150)

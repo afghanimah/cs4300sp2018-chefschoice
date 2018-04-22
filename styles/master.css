@@ -11,7 +11,10 @@ body{
       rgba(0, 0, 0, 0.30),
       rgba(0, 0, 0, 0.30)
     ),
-    url(../images/background.jpg);
+	url(../images/background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 h1 {
@@ -52,4 +55,34 @@ input.search-input {
 }
 .center {
 	text-align: center;
+}
+
+#dashboard {
+	height: 500px;
+	width: 100%;
+	/* margin: 20px; */
+}
+
+#userFoodRatingContainer, #userFoodNutrientsContainer, #userFoodOptimalMoodContainer {
+	display: inline-block;
+	height: 350px;
+	width: 33%;
+	padding: 10px;
+}
+
+#userFoodRatingContainer svg, #userFoodOptimalMoodContainer svg {
+	/* margin: 0 auto; */
+	/* width: 100%; */
+	/* padding: 10px; */
+	/* position: relative; */
+}
+
+#userFoodNutrientsContainer {
+	background: rgba(255, 255, 255, 0.6);
+	border-radius: 10%;
+	font-size: 25px;
+}
+
+#foodInput{
+	text-decoration: underline;
 }
