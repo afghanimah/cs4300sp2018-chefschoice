@@ -10,7 +10,7 @@ form{
   margin-bottom:15px;
   display: inline-block;
 }
-input {
+input[type=text] {
   font-size:30px;
   padding:10px 10px 10px 5px;
   display:block;
@@ -19,7 +19,7 @@ input {
   border-bottom:1px solid #757575;
   background: transparent;
 }
-input:focus{
+input[type=text]:focus{
   outline:none;
 }
 

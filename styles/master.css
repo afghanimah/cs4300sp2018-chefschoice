@@ -26,6 +26,28 @@ input.search-input {
 	margin-bottom: 1%;
 }
 
+input[type=submit] {
+  color: #333;
+  text-decoration: none;
+  transition: 0.3s all ease;
+  width: 150px;
+  height: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  border: 3px solid #B81A2E;
+  border-radius: 4px;
+  display: block;
+  margin: 30px auto;
+}
+input[type=submit]:hover {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+input[type=submit]:active {
+  color:black
+}
+
 #projectInfo {
 	color: white;
 	position: absolute;
@@ -86,6 +108,3 @@ input.search-input {
 #foodInput{
 	text-decoration: underline;
 }
-
-
-
