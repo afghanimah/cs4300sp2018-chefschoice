@@ -1,6 +1,5 @@
 <!-- Main Page -->
 <?php include('includes/init.php'); ?>
-
 <!DOCTYPE html>
 
 <html>
@@ -13,7 +12,6 @@
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="includes/slide.js"></script>
-
 	<title>Chef's Choice</title>
 </header>
 <body>
@@ -26,12 +24,25 @@
 				<div class="center">
 					When I am
 					<div class="group">
-						<?php
-							$mood = htmlspecialchars($_POST["input-mood"]);
-							$command = escapeshellcmd("scripts/parser.py ".$mood);
-							$output = shell_exec($command);
-						?>
-						<input type="text" name="input-mood" id="mood" onkeypress="autosuggest()" required>
+						<script>
+							function autosuggest(str) {
+								console.log(str);
+								if (str.length == 0) { 
+									console.log("_blank")
+									return;
+								} else {
+									var xmlhttp = new XMLHttpRequest();
+									xmlhttp.onreadystatechange = function() {
+										if (this.readyState == 4 && this.status == 200) {
+											console.log(this.responseText);
+										}
+									};
+									xmlhttp.open("GET", "phpserver.php?q=" + str, true);
+									xmlhttp.send();
+								}
+							}
+						</script>
+						<input type="text" name="input-mood" id="mood" onkeyup="autosuggest(this.value)" required>
 						<span class="bar"></span>
 						<label>[mood]</label>
 					</div>,

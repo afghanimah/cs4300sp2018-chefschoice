@@ -9,7 +9,8 @@ import Levenshtein  # package python-Levenshtein
 
 # Extracts list of feelings from WeFeelFine API: http://wefeelfine.org/api.html
 def get_feelings():
-	file_object = open("../data/feelings.txt", "r")
+	#file_object = open("../data/feelings.txt", "r")
+	file_object = open("data/feelings.txt", "r")
 	lines = file_object.read().split('\n')
 	words = []
 	for line in lines:
