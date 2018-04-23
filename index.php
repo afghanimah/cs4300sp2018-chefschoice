@@ -26,7 +26,12 @@
 				<div class="center">
 					When I am
 					<div class="group">
-						<input type="text" name="input-mood" required>
+						<?php
+							$mood = htmlspecialchars($_POST["input-mood"]);
+							$command = escapeshellcmd("scripts/parser.py ".$mood);
+							$output = shell_exec($command);
+						?>
+						<input type="text" name="input-mood" id="mood" onkeypress="autosuggest()" required>
 						<span class="bar"></span>
 						<label>[mood]</label>
 					</div>,
@@ -111,9 +116,6 @@
 
 	<div id="results">
 		<?php include('format.php');?>
-
 	</div>
-
-
 </body>
 </html>

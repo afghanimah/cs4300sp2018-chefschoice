@@ -24,11 +24,11 @@
 
 
 		//standard link for unirest request
-		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?";
+		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
 		// These code snippets use an open-source library. http://unirest.io/php
 		$response = Unirest\Request::get(
-			$getRequestLink."query=".$foodInput."&number=".$number,
+			$getRequestLink."/recipes/search?query=".$foodInput."&number=".$number,
 			  array(
 			    "X-Mashape-Key" => $API_KEY,
 			    "Accept" => "application/json"
@@ -87,6 +87,19 @@
 			</div>
 
 		<?php
+
+		function getFoodID($id) {
+			$response = Unirest\Request::get(
+				$getRequestLink."/food/menuItems/".$item[""],
+			  array(
+			    "X-Mashape-Key" => $API_KEY,
+			    "Accept" => "application/json"
+			  )
+			);
+			return $response;
+		};
+
+
 		//displays results from query
 		foreach($parsedResponse["results"] as $item) {?>
 			<div class="resultsCard">
@@ -102,7 +115,7 @@
 					</div>
 				</div>
 			</div>
-			<?php 
+			<?php
 		};
 	}
 ?>

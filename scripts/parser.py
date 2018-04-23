@@ -1,10 +1,12 @@
 import json
 import sys
+import search
 
-json_string = sys.argv[1]
+# number of feelings to suggest
+NUM_FEELINGS = 10
+
+json_string = sys.argv[0]
 json_parsed = json.loads(json_string)
+feelings = get_feelings()
 
-#json.loads("json string")
-#use as dictionary
-
-print json_parsed
+print(autosuggest(json_parsed, feelings, NUM_FEELINGS))
