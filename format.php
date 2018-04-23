@@ -67,7 +67,7 @@
 						.attr("fill", "white");
 					</script>
 				<div id="userFoodNutrientsContainer">
-					<h2>Nutrients in <span id="foodInput"><?php echo $foodInput;?></span> Include: </h2>
+					<h2>Nutrients in <span id="foodInput"><?php echo $foodInput;?></span>: </h2>
 				</div>
 				<div id="userFoodOptimalMoodContainer"></div>
 				<script>
@@ -101,9 +101,21 @@
 
 
 		//displays results from query
-		foreach($parsedResponse["results"] as $item) {
-			// echo getFoodID($item["id"]);
-			echo $i." ".$item["title"]."<br>";
+		foreach($parsedResponse["results"] as $item) {?>
+			<div class="resultsCard">
+				<?php
+				$imageExtension = explode(".", $item["image"]);
+				?>
+				<div class="resultsImage">
+					<img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
+				</div>
+				<div class="resultsInfo">
+					<div class="resultsText">
+						<h1><?php echo $item["title"]?></h1>
+					</div>
+				</div>
+			</div>
+			<?php
 		};
 	}
 ?>
