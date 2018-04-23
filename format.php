@@ -13,6 +13,7 @@
 
 	// $ppl = new SpoonacularAPIClient("Johanna");
 	$client = $client->getClient();
+	$clientArray = array("X-Mashape-Key" => $API_KEY,"Accept" => "application/json");
 
 
 	if ($_POST['submit-query']) {
@@ -29,10 +30,7 @@
 		// These code snippets use an open-source library. http://unirest.io/php
 		$response = Unirest\Request::get(
 			$getRequestLink."/recipes/search?query=".$foodInput."&number=".$number,
-			  array(
-			    "X-Mashape-Key" => $API_KEY,
-			    "Accept" => "application/json"
-			  ));
+			  $clientArray);
 
 		//encodes unirest object to json for iteration purposes
 		 $parsedResponse = json_decode(json_encode($response->body), true);
@@ -88,16 +86,10 @@
 
 		<?php
 
-		function getFoodID($id) {
-			$response = Unirest\Request::get(
-				$getRequestLink."/food/menuItems/".$item[""],
-			  array(
-			    "X-Mashape-Key" => $API_KEY,
-			    "Accept" => "application/json"
-			  )
-			);
-			return $response;
-		};
+		function getFoodByID($id, $clientArray) {
+			$response = Unirest\Request::get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".$id."/information?includeNutrition=true", $clientArray);
+			return json_decode(json_encode($response->body), true);
+	};
 
 
 		//displays results from query
@@ -111,7 +103,11 @@
 				</div>
 				<div class="resultsInfo">
 					<div class="resultsText">
+						<?php $foodItem = getFoodByID($item["id"], $clientArray);?>
 						<h1><?php echo $item["title"]?></h1>
+						<h2><?php echo "Likes: ".$foodItem["aggregateLikes"]?></h2>
+						<h2><?php echo "Score: ".$foodItem["spoonacularScore"]?></h2>
+						<h2><?php echo "Health Score: ".$foodItem["healthScore"]?></h2>
 					</div>
 				</div>
 			</div>
