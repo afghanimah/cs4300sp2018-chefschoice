@@ -19,13 +19,85 @@
 	if ($_POST['submit-query']) {
 		$foodInput = filter_input(INPUT_POST, 'input-food', FILTER_SANITIZE_STRING);
 		$moodInput = filter_input(INPUT_POST, 'input-mood', FILTER_SANITIZE_STRING);
-    $nutrientsInput = filter_input(INPUT_POST, 'input-nutrient', FILTER_SANITIZE_STRING);
-    $restrictionsInput = filter_input(INPUT_POST, 'input-restriction', FILTER_SANITIZE_STRING);
-    // $cuisinesInput = $_POST["input-cuisine"];
-
+    $nutrientInput = filter_input(INPUT_POST, 'input-nutrient', FILTER_SANITIZE_STRING);
+		$cuisineInput = filter_input(INPUT_POST, 'input-cuisine', FILTER_SANITIZE_STRING);
+		$dietInput = filter_input(INPUT_POST, 'input-diet', FILTER_SANITIZE_STRING);
+		$excludeInput = filter_input(INPUT_POST, 'input-exclude', FILTER_SANITIZE_STRING);
+		$intolerancesInput = filter_input(INPUT_POST, 'input-intolerances', FILTER_SANITIZE_STRING);
+		$typeInput = filter_input(INPUT_POST, 'input-type', FILTER_SANITIZE_STRING);
 
 		//standard link for unirest request
 		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+
+		// concatenate GET URL
+		// https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=test&diet=test&excludeIngredients=test&instructionsRequired=false&intolerances=test&number=10&query=burger&type=test
+		$first = true;
+
+		$getURL = $getRequestLink . "/recipes/search?";
+		if ($cuisineInput != ''){
+			echo '<script>console.log("cuisine not empty")</script>';
+			if ($first){
+				echo '<script>console.log("cuisine empty - if")</script>';
+				$getURL .= "cuisine=" . $cuisineInput;
+				$first = false;
+			} else {
+				echo '<script>console.log("cuisine empty - else")</script>';
+				$getURL .= "&cuisine=" . $cuisineInput;
+			}
+		}
+
+		if ($dietInput != ''){
+			if ($first){
+				$getURL .= "diet=" . $dietInput;
+				$first = false;
+			} else {
+				$getURL .= "&diet=" . $dietInput;
+			}
+		}
+
+		if ($excludeInput != ''){
+			if ($first){
+				$getURL .= "excludeIngredients=" . $excludeInput;
+				$first = false;
+			} else {
+				$getURL .= "&excludeIngredients=" . $excludeInput;
+			}
+		}
+
+		if ($intolerancesInput != ''){
+			if ($first){
+				$getURL .= "intolerances=" . $intolerancesInput;
+				$first = false;
+			} else {
+				$getURL .= "&intolerances=" . $intolerancesInput;
+			}
+		}
+
+		// always need to limit to 10
+		if ($first){
+			$getURL .= "number=" . "10";
+			$first = false;
+		} else {
+			$getURL .= "&number=" . "10";
+		}
+
+		// query required
+		if ($first){
+			$getURL .= "query=" . $foodInput;
+			$first = false;
+		} else {
+			$getURL .= "&query=" . $foodInput;
+		}
+
+		if ($typeInput != ''){
+			if ($first){
+				$getURL .= "type=" . $typeInput;
+				$first = false;
+			} else {
+				$getURL .= "&type=" . $typeInput;
+			}
+		}
+
 
 		// These code snippets use an open-source library. http://unirest.io/php
 		$response = Unirest\Request::get(
