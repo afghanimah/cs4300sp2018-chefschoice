@@ -40,7 +40,6 @@
 						<span class="bar"></span>
 						<label>[food]</label>
 					</div>.
-
 					<input type="submit" name="submit-query" value="go"/>
 				</div>
 
