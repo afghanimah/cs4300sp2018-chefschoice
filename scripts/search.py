@@ -7,7 +7,6 @@ import sys
 import math
 import Levenshtein  # package python-Levenshtein
 
-
 # Extracts list of feelings from WeFeelFine API: http://wefeelfine.org/api.html
 def get_feelings():
 	file_object = open("../data/feelings.txt", "r")
@@ -17,6 +16,7 @@ def get_feelings():
 		words.append(line.split('\t'))
 	words = list(map(lambda a: a[0], words))
 	return words
+
 
 #calculates the edit distance between two words as implemented in assignment 03
 def edit_distance(query, message,insertion_cost=1,deletion_cost=1,substitution_cost=2):
@@ -47,6 +47,7 @@ def edit_distance(query, message,insertion_cost=1,deletion_cost=1,substitution_c
             )
     return chart[i, j]
 
+
 def autosuggest(source, data, num_results):
 	""" Auto-suggestion for input query
 	@Parameters:
@@ -63,6 +64,7 @@ def autosuggest(source, data, num_results):
 		results = list(filter(lambda s: s[i] == letter, results))
 		i += 1
 	return results[:num_results]
+
 
 def autocorrect(source, data, num_results):
 	""" Auto-correction for input query
@@ -81,8 +83,6 @@ def autocorrect(source, data, num_results):
 
 	ranked_results = sorted(results, key=results.get)
 	return ranked_results[:num_results]
-
-print(autosuggest("st", get_feelings(), 20))
 
 moods = {
 	'anger': 'magnesium',
