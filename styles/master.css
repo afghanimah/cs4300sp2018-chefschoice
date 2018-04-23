@@ -38,7 +38,7 @@ input[type=submit] {
   border: 3px solid #B81A2E;
   border-radius: 4px;
   display: block;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 input[type=submit]:hover {
   -webkit-transform: scale(1.1);

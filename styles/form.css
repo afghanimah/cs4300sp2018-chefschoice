@@ -1,17 +1,17 @@
 * { box-sizing:border-box; }
 
 form{
-  font-size: 30px;
+  font-size: 25px;
 }
 
 /* form starting stylings ------------------------------- */
 .group {
   position:relative;
-  margin-bottom:15px;
+  margin-bottom:10px;
   display: inline-block;
 }
 input[type=text] {
-  font-size:30px;
+  font-size:25px;
   padding:10px 10px 10px 5px;
   display:block;
   width:200px;
@@ -26,7 +26,7 @@ input[type=text]:focus{
 /* LABEL ======================================= */
 label {
   color:#999;
-  font-size:30px;
+  font-size:25px;
   font-weight:normal;
   position:absolute;
   pointer-events:none;
@@ -69,4 +69,18 @@ input:focus ~ label, input:valid ~ label {
 /* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
   width:50%;
+}
+
+/********** ADVANCED SEARCH *********/
+#adv-panel, #slide {
+	padding: 5px;
+	font-size: 17px;
+	text-align: center;
+}
+#adv-panel:hover {
+	color: #B81A2E;
+}
+#slide {
+	display: none;
+	padding: 30px;
 }
