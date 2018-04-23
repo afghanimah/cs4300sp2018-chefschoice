@@ -59,7 +59,7 @@
 								"Middle Eastern", "Jewish", "American", "Cajun", "Southern", "Greek",
 								"German", "Nordic", "Eastern European", "Caribbean", "Latin American");
 								foreach ($cuisineArr as $cuisine) {
-									echo '<option value=\"' . $cuisine . '\"> ' . $cuisine . '</option>';
+									echo '<option value=' . $cuisine . '> ' . $cuisine . '</option>';
 								}
 								?>
 							</select>
@@ -71,7 +71,7 @@
 								<?php
 								$dietArr = array("Pescetarian", "Lacto vegetarian", "Ovo vegetarian", "Vegan", "Vegetarian");
 								foreach ($dietArr as $diet) {
-									echo '<option value=\"' . $diet . '\"> ' . $diet . '</option>';
+									echo '<option value=' . $diet . '> ' . $diet . '</option>';
 								}
 								?>
 							</select>
@@ -84,7 +84,7 @@
 								$intolerancesArr = array("Dairy", "Egg", "Gluten", "Peanut", "Sesame",
 								"Seafood", "Shellfish", "Soy", "Sulfite", "Tree nut", "Wheat");
 								foreach ($intolerancesArr as $intol) {
-									echo '<option value=\"' . $intol . '\"> ' . $intol . '</option>';
+									echo '<option value=' . $intol . '> ' . $intol . '</option>';
 								}
 								?>
 							</select>
@@ -97,7 +97,7 @@
 								$typeArr = array("Main course", "Side", "Dessert", "Appetizer", "Salad",
 								"Bread", "Breakfast", "Soup", "Beverage", "Sauce", "Drink");
 								foreach ($typeArr as $type) {
-									echo '<option value=\"' . $type . '\"> ' . $type . '</option>';
+									echo '<option value=' . $type . '> ' . $type . '</option>';
 								}
 								?>
 							</select>
