@@ -1,2 +1,4 @@
 includes/apikey.php
 .DS_Store
+__pycache__/
+*.pyc
