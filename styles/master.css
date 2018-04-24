@@ -80,7 +80,7 @@ input[type=submit]:active {
 }
 
 #dashboard {
-	height: 500px;
+	height: 450px;
 	width: 100%;
 	margin: 20px;
 	display: flex;
@@ -99,7 +99,7 @@ input[type=submit]:active {
 }
 
 #userFoodNutrientsContainer {
-	background: rgba(255, 255, 255, 0.6);
+	background: rgba(255, 255, 255, 0.8);
 	border-radius: 10%;
 	font-size: 25px;
 }
@@ -144,7 +144,7 @@ input[type=submit]:active {
 
 .resultsText h1{
 	margin: 0 0 0 38px;
-	padding-top: 52px;
+	padding-top: 15px;
 	font-size: 34px;
 	color: #474747;
 }
