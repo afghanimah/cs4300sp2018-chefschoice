@@ -16,6 +16,17 @@
 </header>
 <body>
 
+	<div id="names_topright">
+		Abraham Ghanimah (afg63)
+		Abrahm Magana (adm264)
+		Johanna Smith-Palliser (jls628)
+		Oscar Barraza (odb5)
+	</div>
+
+	<div id="chef_bottomright">
+		<img src="images/chef.png" alt="Cartoon chef" />
+	</div>
+
 	<div id='contentContainer'>
 		<div id='content'>
 			<h1>Chef's Choice</h1>
@@ -27,7 +38,7 @@
 						<script>
 							function autosuggest(str) {
 								console.log(str);
-								if (str.length == 0) { 
+								if (str.length == 0) {
 									console.log("_blank")
 									return;
 								} else {
@@ -123,7 +134,6 @@
 
 		</div>
 	</div>
-
 
 	<div id="results">
 		<?php include('format.php');?>

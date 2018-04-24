@@ -111,7 +111,7 @@ input[type=submit]:active {
 .resultsCard{
 	height: 420px;
 	width: 654px;
-	margin: 50px auto;
+	margin: 30px auto;
 	border-radius: 7px 7px 7px 7px;
 	/* VIA CSS MATIC https://goo.gl/cIbnS */
 	-webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -121,7 +121,7 @@ input[type=submit]:active {
 
 .resultsImage{
 	float: left;
-  	height: 420px;
+  height: 420px;
  	width: 327px;
 }
 
@@ -143,8 +143,24 @@ input[type=submit]:active {
 }
 
 .resultsText h1{
-	margin: 0 0 0 38px;
-	padding-top: 52px;
+	margin: 10px 0 0 20px;
 	font-size: 34px;
 	color: #474747;
+}
+
+#names_topright{
+	color: white;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 200px;
+	text-align:right;
+}
+#chef_bottomright {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+#chef_bottomright img{
+	width: 15vh;
 }
