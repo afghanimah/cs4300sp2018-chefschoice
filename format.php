@@ -101,7 +101,7 @@
 
 		// These code snippets use an open-source library. http://unirest.io/php
 		$response = Unirest\Request::get(
-			$getRequestLink."/recipes/search?query=".$foodInput."&number=".$number,
+			$getURL,
 			  $clientArray);
 
 		//encodes unirest object to json for iteration purposes
