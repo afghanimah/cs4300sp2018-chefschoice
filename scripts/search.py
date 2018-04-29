@@ -89,10 +89,10 @@ def autocorrect(source, data, num_results):
 moods = {
 	'angry': 'magnesium',
 	'disgusted': 'fat',
-	'frightened': 'carbs',
+	'frightened': 'carbohydrates',
 	'surprised': 'manganese',
 	'sad': 'vitamin d',
-	'happy': 'vitamin b'
+	'happy': 'vitamin b6'
 }
 
 cuisines_dict = {

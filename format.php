@@ -85,11 +85,12 @@
 
 		// query required
 		// AB!!!! CHANGE FOOD INPUT HERE
+		$m = ($moodFood[$moodInput] == 'vitamin b6') ? 'vitamin b' : $moodFood[$moodInput];
 		if ($first){
-			$getURL .= "query=" . $moodFood[$moodInput];
+			$getURL .= "query=" . $m;
 			$first = false;
 		} else {
-			$getURL .= "&query=" . $moodFood[$moodInput];
+			$getURL .= "&query=" . $m;
 		}
 
 		if ($typeInput != ''){
@@ -129,7 +130,6 @@
 		 $score = 0.2;
 		 $rating = NULL;
 		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
-		 $optimalMood = "HAPPY";
 	} else {
 		unset($_SESSION["mood"]);
 		unset($_SESSION["food"]);
