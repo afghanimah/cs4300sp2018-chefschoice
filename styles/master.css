@@ -20,10 +20,12 @@ body{
 h1 {
 	font-family: "Playfair Display";
 }
+
 h1 a {
 	text-decoration: none;
 	color: black;
 }
+
 h1 a:hover {
 	color: #303030;
 }
@@ -47,10 +49,12 @@ input[type=submit] {
   display: block;
   margin: 20px auto;
 }
+
 input[type=submit]:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
 input[type=submit]:active {
   color:black
 }
@@ -67,12 +71,14 @@ input[type=submit]:active {
 	width: 50%;
 	margin: auto;
 }
+
 #content {
 	background: rgba(255, 255, 255, 1);
 	border-radius: 30px;
 	margin: 0 10px;
 	padding-bottom: 10px;
 }
+
 #content h1 {
 	font-size: 70px;
 	color: black;
@@ -149,12 +155,19 @@ input[type=submit]:active {
 .resultsText h1{
 	margin: 0 0 0 38px;
 	padding-top: 15px;
-	font-size: 34px;
+	/* font-size: 34px; */
 	color: #474747;
 }
-.ingredients-heading {
-	padding: 0;
+
+#ingredients-output {
+	margin: 1em;
 }
+
+#ingredients-output h3 {
+	font-size: 24px;
+	text-decoration: underline;
+}
+
 ul {
 	list-style: none;
 	margin: 0.5em 0 0;
