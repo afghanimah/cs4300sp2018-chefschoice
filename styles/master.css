@@ -112,7 +112,7 @@ input[type=submit]:active {
 	height: 420px;
 
 	width: 654px;
-	margin: 50px auto;
+	margin: 30px auto;
 	border-radius: 7px 7px 7px 7px;
 	/* VIA CSS MATIC https://goo.gl/cIbnS */
 	-webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -122,7 +122,7 @@ input[type=submit]:active {
 
 .resultsImage{
 	float: left;
-  	height: 420px;
+  height: 420px;
  	width: 327px;
 }
 
@@ -169,4 +169,5 @@ span::nth-of-type(2){
 	font-weight: 300;
 	vertical-align: middle;
 	color: #838689;
+
 }
