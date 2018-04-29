@@ -164,134 +164,136 @@
 			include('format.php');
 			if ($_POST['submit-query']) {
 		?>
-		<div id="dashboard">
-			 <div id="userFoodRatingContainer"></div>
-				 <script>
-					 var colorScale = d3.scaleSequential(d3.interpolateRdYlGn);
-					 var userFoodRatingHeight = 350;
-					 var userFoodRatingWidth = 350;
-					 var userFoodRatingSVG = d3.select("#userFoodRatingContainer").append("svg")
-																		 .attr("height", userFoodRatingHeight)
-																		 .attr("width", userFoodRatingWidth);
+				<div id="dashboard">
+					 <div id="userFoodRatingContainer"></div>
+						 <script>
+							 var colorScale = d3.scaleSequential(d3.interpolateRdYlGn);
+							 var userFoodRatingHeight = 350;
+							 var userFoodRatingWidth = 350;
+							 var userFoodRatingSVG = d3.select("#userFoodRatingContainer").append("svg")
+																				 .attr("height", userFoodRatingHeight)
+																				 .attr("width", userFoodRatingWidth);
 
-					 userFoodRatingSVG.append("circle")
-					 .attr("cx", userFoodRatingHeight/2)
-					 .attr("cy", userFoodRatingWidth/2)
-					 .attr("r", 150)
-					 .style("fill", colorScale(<?php echo $score; ?>));
+							 userFoodRatingSVG.append("circle")
+							 .attr("cx", userFoodRatingHeight/2)
+							 .attr("cy", userFoodRatingWidth/2)
+							 .attr("r", 150)
+							 .style("fill", colorScale(<?php echo $score; ?>));
 
-					 userFoodRatingSVG.append("text")
-					 .attr("x", userFoodRatingHeight/2)
-					 .attr("y", userFoodRatingWidth/2)
-					 .text(<?php echo $score*100; ?>+"%")
-					 .style("alignment-baseline", "middle")
-					 .style("text-anchor", "middle")
-						 .attr("font-family", "Source Sans Pro")
-						 .attr("font-size", "80px")
-						 .attr("fill", "white");
+							 userFoodRatingSVG.append("text")
+							 .attr("x", userFoodRatingHeight/2)
+							 .attr("y", userFoodRatingWidth/2)
+							 .text(<?php echo $score*100; ?>+"%")
+							 .style("alignment-baseline", "middle")
+							 .style("text-anchor", "middle")
+								 .attr("font-family", "Source Sans Pro")
+								 .attr("font-size", "80px")
+								 .attr("fill", "white");
 
-					 userFoodRatingSVG.append("text")
-					 .attr("x", userFoodRatingHeight/2)
-					 .attr("y", 3*userFoodRatingWidth/5)
-					 .text("<?php echo $foodInput; echo ((substr($foodInput,-1) == "s") ? " are" : " is");?> a")
-					 .style("alignment-baseline", "hanging")
-					 .style("text-anchor", "middle")
-						 .attr("font-family", "Source Sans Pro")
-						 .attr("font-size", "30px")
-						 .attr("fill", "white");
+							 userFoodRatingSVG.append("text")
+							 .attr("x", userFoodRatingHeight/2)
+							 .attr("y", 3*userFoodRatingWidth/5)
+							 .text("<?php echo $foodInput; echo ((substr($foodInput,-1) == "s") ? " are" : " is");?> a")
+							 .style("alignment-baseline", "hanging")
+							 .style("text-anchor", "middle")
+								 .attr("font-family", "Source Sans Pro")
+								 .attr("font-size", "30px")
+								 .attr("fill", "white");
 
-					 userFoodRatingSVG.append("text")
-					 .attr("x", userFoodRatingHeight/2)
-					 .attr("y", 3*userFoodRatingWidth/5 + 30)
-					 .text("<?php echo $rating; ?> choice!")
-					 .style("alignment-baseline", "hanging")
-					 .style("text-anchor", "middle")
-						 .attr("font-family", "Source Sans Pro")
-						 .attr("font-size", "30px")
-						 .attr("fill", "white")
-						 .attr("word-wrap", "break-word");
+							 userFoodRatingSVG.append("text")
+							 .attr("x", userFoodRatingHeight/2)
+							 .attr("y", 3*userFoodRatingWidth/5 + 30)
+							 .text("<?php echo $rating; ?> choice!")
+							 .style("alignment-baseline", "hanging")
+							 .style("text-anchor", "middle")
+								 .attr("font-family", "Source Sans Pro")
+								 .attr("font-size", "30px")
+								 .attr("fill", "white")
+								 .attr("word-wrap", "break-word");
 
-				 </script>
-			 <div id="userFoodNutrientsContainer">
-				 <h2>Top nutrients in <span id="foodInput"><?php echo $foodInput;?></span>: </h2>
-				 <ul>
-					 <?php
-					 foreach ($topNut as $nutr => $amt){
-						 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
-					 }
-					 ?>
-				 </ul>
-			 </div>
-			 <div id="userFoodOptimalMoodContainer"></div>
-			 <script>
-					 var userFoodOptimalMoodHeight = 350;
-					 var userFoodOptimalMoodWidth = 350;
-					 var userFoodOptimalMoodSVG = d3.select("#userFoodOptimalMoodContainer").append("svg")
-					.attr("height", userFoodOptimalMoodHeight)
-					.attr("width", userFoodOptimalMoodWidth);
-
-					 userFoodOptimalMoodSVG.append("circle")
-					 .attr("class", "userFoodOptimalMood")
-					 .attr("cx", userFoodRatingHeight/2)
-					 .attr("cy", userFoodRatingWidth/2)
-					 .attr("r", 150)
-						 .style("fill", "bisque");
-
-					 userFoodOptimalMoodSVG.append("text")
-					 .attr("x", userFoodRatingHeight/2)
-					 .attr("y", userFoodRatingWidth/2)
-					 .text("<?php echo $optimalMood; ?>")
-					 .style("alignment-baseline", "middle")
-					 .style("text-anchor", "middle")
-						 .attr("font-family", "Source Sans Pro")
-						 .attr("font-size", "70px")
-						 .attr("fill", "black")
-						 .attr("word-wrap", "break-word");
-
-					 userFoodOptimalMoodSVG.append("text")
-					 .attr("x", userFoodRatingHeight/2)
-					 .attr("y", userFoodRatingWidth/3 - 15)
-					 .text("<?php echo $foodInput; ?> is best when")
-					 .style("alignment-baseline", "hanging")
-					 .style("text-anchor", "middle")
-						 .attr("font-family", "Source Sans Pro")
-						 .attr("font-size", "25px")
-						 .attr("fill", "black")
-						 .attr("word-wrap", "break-word");
-				 </script>
-		 </div>
-		 <?php
-		 //displays results from query
-		 foreach($parsedResponse["results"] as $item) {?>
-			 <div class="resultsCard">
-				 <?php
-				 $imageExtension = explode(".", $item["image"]);
-				 ?>
-				 <div class="resultsImage">
-					 <img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
-				 </div>
-				 <div class="resultsInfo">
-					 <div class="resultsText">
-						 <?php $foodItem = getFoodByID($item["id"], $clientArray);?>
-						 <h1><?php echo $item["title"]?></h1>
+						 </script>
+					 <div id="userFoodNutrientsContainer">
+						 <h2>Top nutrients in <span id="foodInput"><?php echo $foodInput;?></span>: </h2>
 						 <ul>
-							 <li><span class="icon ion-thumbsup"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
-							 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
-							 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
-						 </ul>
-						 <div id="ingredients-output">
-							 <h3>Ingredients:</h3>
 							 <?php
-							 foreach($foodItem["nutrition"]["ingredients"] as $ingredient){
-								 echo "<h2>".$ingredient["name"]."</h2>";
-							 } ?>
-						 </div>
+							 foreach ($topNut as $nutr => $amt){
+								 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
+							 }
+							 ?>
+						 </ul>
 					 </div>
+					 <div id="userFoodOptimalMoodContainer"></div>
+					 <script>
+							 var userFoodOptimalMoodHeight = 350;
+							 var userFoodOptimalMoodWidth = 350;
+							 var userFoodOptimalMoodSVG = d3.select("#userFoodOptimalMoodContainer").append("svg")
+							.attr("height", userFoodOptimalMoodHeight)
+							.attr("width", userFoodOptimalMoodWidth);
+
+							 userFoodOptimalMoodSVG.append("circle")
+							 .attr("class", "userFoodOptimalMood")
+							 .attr("cx", userFoodRatingHeight/2)
+							 .attr("cy", userFoodRatingWidth/2)
+							 .attr("r", 150)
+								 .style("fill", "bisque");
+
+							 userFoodOptimalMoodSVG.append("text")
+							 .attr("x", userFoodRatingHeight/2)
+							 .attr("y", userFoodRatingWidth/2)
+							 .text("<?php echo $optimalMood; ?>")
+							 .style("alignment-baseline", "middle")
+							 .style("text-anchor", "middle")
+								 .attr("font-family", "Source Sans Pro")
+								 .attr("font-size", "70px")
+								 .attr("fill", "black")
+								 .attr("word-wrap", "break-word");
+
+							 userFoodOptimalMoodSVG.append("text")
+							 .attr("x", userFoodRatingHeight/2)
+							 .attr("y", userFoodRatingWidth/3 - 15)
+							 .text("<?php echo $foodInput; ?> is best when")
+							 .style("alignment-baseline", "hanging")
+							 .style("text-anchor", "middle")
+								 .attr("font-family", "Source Sans Pro")
+								 .attr("font-size", "25px")
+								 .attr("fill", "black")
+								 .attr("word-wrap", "break-word");
+						 </script>
 				 </div>
-			 </div>
-			 <?php
-		 };
-	 }?>
+				 <?php
+				 //displays results from query
+				 foreach($parsedResponse["results"] as $item) {?>
+					 <?php $foodItem = getFoodByID($item["id"], $clientArray);?>
+					 <div class="resultsCard">
+						 <?php
+						 $imageExtension = explode(".", $item["image"]);
+						 ?>
+						 <a href="<?php echo $foodItem["spoonacularSourceUrl"];?>">
+							 <div class="resultsImage">
+								 <img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
+							 </div>
+						 <div class="resultsInfo">
+							 <div class="resultsText">
+								 <h1><?php echo $item["title"]?></h1>
+								 <ul>
+									 <li><span class="icon ion-thumbsup"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
+									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
+									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
+								 </ul>
+								 <div id="ingredients-output">
+									 <h3>Ingredients:</h3>
+									 <?php
+									 foreach($foodItem["nutrition"]["ingredients"] as $ingredient){
+										 echo "<h2>".$ingredient["name"]."</h2>";
+									 } ?>
+								 </div>
+							 </div>
+						 </div>
+					 </a>
+				 </div>
+					 <?php
+				 };
+	 	 }?>
 
 	</div>
 </body>
