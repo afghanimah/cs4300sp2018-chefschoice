@@ -128,6 +128,11 @@ input[type=submit]:active {
 	border-radius: 7px 7px 7px 7px;
 }
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
 .resultsImage{
 	float: left;
   height: 420px;
