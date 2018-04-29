@@ -20,6 +20,13 @@ body{
 h1 {
 	font-family: "Playfair Display";
 }
+h1 a {
+	text-decoration: none;
+	color: black;
+}
+h1 a:hover {
+	color: #303030;
+}
 
 input.search-input {
 	display: block;

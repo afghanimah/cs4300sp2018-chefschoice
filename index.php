@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="styles/master.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="styles/form.css" media="all"/>
+	<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" media="all"/>
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:200" rel="stylesheet">
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -29,7 +30,7 @@
 
 	<div id='contentContainer'>
 		<div id='content'>
-			<h1>Chef's Choice</h1>
+			<h1><a href="">Chef's Choice</a></h1>
 
 			<form method="post" action="index.php" name="search-form">
 				<div class="center">
@@ -69,65 +70,86 @@
 						<div id="adv-panel">Advanced Search</div>
 						<div id="slide">
 
-							<input type="text" name="input-nutrient" placeholder="Nutrient"/>
+							<div class="group">
+								<input type="text" name="input-nutrient" placeholder=""/>
+								<span class="bar"></span>
+								<label>[nutrient]</label>
+							</div>
+
+							<div class="group">
+								<input type="text" name="input-exclude" placeholder=""/>
+								<span class="bar"></span>
+								<label>[exclude]</label>
+							</div>
 
 							<br />
 
-							<select name="input-cuisine">
-								<option disabled selected value> Select Cuisine </option>
-								<?php
-								$cuisineArr = array("African", "Chinese", "Japanese", "Korean", "Vietnamese",
-								"Thai", "Indian", "British", "Irish", "French", "Italian", "Mexican", "Spanish",
-								"Middle Eastern", "Jewish", "American", "Cajun", "Southern", "Greek",
-								"German", "Nordic", "Eastern European", "Caribbean", "Latin American");
-								foreach ($cuisineArr as $cuisine) {
-									echo '<option value=' . $cuisine . '> ' . $cuisine . '</option>';
-								}
-								?>
-							</select>
+							<div id="dropdowns-container">
+								<div class="custom-select">
+									<select name="input-cuisine">
+										<option disabled selected value>[cuisine]</option>
+										<?php
+										$cuisineArr = array("African", "Chinese", "Japanese", "Korean", "Vietnamese",
+										"Thai", "Indian", "British", "Irish", "French", "Italian", "Mexican", "Spanish",
+										"Middle Eastern", "Jewish", "American", "Cajun", "Southern", "Greek",
+										"German", "Nordic", "Eastern European", "Caribbean", "Latin American");
+										foreach ($cuisineArr as $cuisine) {
+											echo '<option value=' . $cuisine . '> ' . $cuisine . '</option>';
+										}
+										?>
+									</select>
+								</div>
 
-							<br />
+								<br />
 
-							<select name="input-diet">
-								<option disabled selected value> Select Diet </option>
-								<?php
-								$dietArr = array("Pescetarian", "Lacto vegetarian", "Ovo vegetarian", "Vegan", "Vegetarian");
-								foreach ($dietArr as $diet) {
-									echo '<option value=' . $diet . '> ' . $diet . '</option>';
-								}
-								?>
-							</select>
+								<div class="custom-select">
+									<select name="input-diet">
+										<option disabled selected value>[diet]</option>
+										<?php
+										$dietArr = array("Pescetarian", "Lacto vegetarian", "Ovo vegetarian", "Vegan", "Vegetarian");
+										foreach ($dietArr as $diet) {
+											echo '<option value=' . $diet . '> ' . $diet . '</option>';
+										}
+										?>
+									</select>
+								</div>
 
-							<input type="text" name="input-exclude" placeholder="Exclude..."/>
+								<br />
 
-							<select name="input-intolerances">
-								<option disabled selected value>Select Intolerances</option>
-								<?php
-								$intolerancesArr = array("Dairy", "Egg", "Gluten", "Peanut", "Sesame",
-								"Seafood", "Shellfish", "Soy", "Sulfite", "Tree nut", "Wheat");
-								foreach ($intolerancesArr as $intol) {
-									echo '<option value=' . $intol . '> ' . $intol . '</option>';
-								}
-								?>
-							</select>
+								<div class="custom-select">
+									<select name="input-intolerances">
+										<option disabled selected value>[intolerances]</option>
+										<?php
+										$intolerancesArr = array("Dairy", "Egg", "Gluten", "Peanut", "Sesame",
+										"Seafood", "Shellfish", "Soy", "Sulfite", "Tree nut", "Wheat");
+										foreach ($intolerancesArr as $intol) {
+											echo '<option value=' . $intol . '> ' . $intol . '</option>';
+										}
+										?>
+									</select>
+								</div>
 
-							<br />
+								<br />
 
-							<select name="input-type">
-								<option disabled selected value> Select Type </option>
-								<?php
-								$typeArr = array("Main course", "Side", "Dessert", "Appetizer", "Salad",
-								"Bread", "Breakfast", "Soup", "Beverage", "Sauce", "Drink");
-								foreach ($typeArr as $type) {
-									echo '<option value=' . $type . '> ' . $type . '</option>';
-								}
-								?>
-							</select>
+								<div class="custom-select">
+									<select name="input-type">
+										<option disabled selected value>[type]</option>
+										<?php
+										$typeArr = array("Main course", "Side", "Dessert", "Appetizer", "Salad",
+										"Bread", "Breakfast", "Soup", "Beverage", "Sauce", "Drink");
+										foreach ($typeArr as $type) {
+											echo '<option value=' . $type . '> ' . $type . '</option>';
+										}
+										?>
+									</select>
+								</div>
+							</div>
+
 
 						</div>
 					</div>
 
-					<input type="submit" name="submit-query" value="go"/>
+					<input type="submit" name="submit-query" value="Analyze"/>
 				</div>
 
 			</form>

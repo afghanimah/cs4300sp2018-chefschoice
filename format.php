@@ -105,7 +105,7 @@
 			  $clientArray);
 
 		//encodes unirest object to json for iteration purposes
-		 $parsedResponse = json_decode(json_encode($response->body), true);
+		$parsedResponse = json_decode(json_encode($response->body), true);
 
 		//  Variable for the comparison score
 		 $score = 0.7;
