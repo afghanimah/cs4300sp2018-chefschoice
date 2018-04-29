@@ -157,6 +157,7 @@
 			  			.attr("font-family", "Source Sans Pro")
 							.attr("font-size", "80px")
 							.attr("fill", "white");
+							
 						userFoodRatingSVG.append("text")
 						.attr("x", userFoodRatingHeight/2)
 						.attr("y", 3*userFoodRatingWidth/5)
@@ -166,6 +167,7 @@
 				  		.attr("font-family", "Source Sans Pro")
 							.attr("font-size", "30px")
 							.attr("fill", "white");
+
 						userFoodRatingSVG.append("text")
 						.attr("x", userFoodRatingHeight/2)
 						.attr("y", 3*userFoodRatingWidth/5 + 30)
@@ -238,13 +240,23 @@
 				</div>
 				<div class="resultsInfo">
 					<div class="resultsText">
+						<div id="tabs">
+							<!-- <ul>
+								<li><a href="#"><h2>NUTRIENTS</h2></a></li>
+								<li><a href="#"><h2> -->
+						</div>
 						<?php $foodItem = getFoodByID($item["id"], $clientArray);?>
 						<h1><?php echo $item["title"]?></h1>
 						<ul>
-							<li><span class="icon icon-Likes"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
-							<li><span class="icon icon-Likes"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
-							<li><span class="icon icon-Likes"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
+							<li><span class="icon ion-thumbsup"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
+							<li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
+							<li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
 						</ul>
+						<h3 id="ingredients-heading">Ingredients:</h3>
+						<?php foreach($foodItem["nutrition"]["ingredients"] as $ingredient){
+							echo "<h2>".$ingredient["name"]."</h2>";
+						} ?>
+
 
 					</div>
 				</div>

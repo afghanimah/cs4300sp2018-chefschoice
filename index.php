@@ -6,6 +6,7 @@
 <header>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="styles/ionicons-2.0.1/css/ionicons.min.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="styles/master.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="styles/form.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" media="all"/>
