@@ -267,7 +267,7 @@
 						 <?php
 						 $imageExtension = explode(".", $item["image"]);
 						 ?>
-						 <a href="<?php echo $foodItem["spoonacularSourceUrl"];?>">
+						 <a href="<?php echo $foodItem["sourceUrl"];?>">
 							 <div class="resultsImage">
 								 <img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
 							 </div>
@@ -281,10 +281,12 @@
 								 </ul>
 								 <div id="ingredients-output">
 									 <h3>Ingredients:</h3>
-									 <?php
-									 foreach($foodItem["nutrition"]["ingredients"] as $ingredient){
-										 echo "<h2>".$ingredient["name"]."</h2>";
-									 } ?>
+									 <div id="individual-ingredients">
+										 <?php
+										 foreach($foodItem["nutrition"]["ingredients"] as $ingredient){
+											 echo "<h2>".$ingredient["name"]."</h2>";
+										 } ?>
+									 </div>
 								 </div>
 							 </div>
 						 </div>
