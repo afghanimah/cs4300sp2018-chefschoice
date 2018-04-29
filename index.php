@@ -219,7 +219,7 @@
 							 <?php
 							 $found = FALSE;
 							 $matchNutrient = "vitamin b";
-							 foreach ($topNut as $nutr => $amt){
+							 foreach (getNutrients($foodSearchItem) as $nutr => $amt){
 								 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
 								 if (in_array(strtolower($nutr), $moodFood) && !$found) {
 									 // echo "test";
@@ -296,6 +296,25 @@
 									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
 									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
 								 </ul>
+								 <ul>
+									 <?php
+									 $found = FALSE;
+									 $matchNutrient = "vitamin b";
+									 foreach (getNutrients($foodItem) as $nutr => $amt){
+										 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
+										 if (in_array(strtolower($nutr), $moodFood) && !$found) {
+											 // echo "test";
+						 						$matchNutrient = strtolower($nutr);
+												// echo $matchNutrient;
+												$found = true;
+						 					}
+									 }
+									 // echo "match = " . $matchNutrient;
+									 // echo array_search($matchNutrient, $moodFood);
+									 $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
+									 ?>
+								 </ul>
+
 								 <div id="ingredients-output">
 									 <h3>Ingredients:</h3>
 									 <div id="individual-ingredients">

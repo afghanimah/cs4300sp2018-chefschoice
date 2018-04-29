@@ -118,14 +118,19 @@
 		$parsedFoodResp = json_decode(json_encode($foodResponse->body), JSON_PRETTY_PRINT);
 		$foodSearchItem = getFoodByID($parsedFoodResp["results"][0]["id"], $clientArray);
 
-		$nutrientAmounts = array();
-		foreach($foodSearchItem["nutrition"]["nutrients"] as $nutrientArr) {
-			if ($nutrientArr["title"] !== "Calories"){
-				$nutrientAmounts[$nutrientArr["title"]] = $nutrientArr["percentOfDailyNeeds"];
+		function getNutrients($foodItem){
+			$nutrientAmounts = array();
+			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
+				if ($nutrientArr["title"] !== "Calories"){
+					$nutrientAmounts[$nutrientArr["title"]] = $nutrientArr["percentOfDailyNeeds"];
+				}
 			}
+			
+			arsort($nutrientAmounts);
+			$topNut = array_slice($nutrientAmounts, 0, 5, true); //Change later to be more like thesaurus
+
+			return $topNut;
 		}
-		arsort($nutrientAmounts);
-		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something looking like thesaurus.com
 
 		 $score = 0.2;
 		 $rating = NULL;
