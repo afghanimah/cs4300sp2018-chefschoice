@@ -156,6 +156,7 @@
 			  			.attr("font-family", "Source Sans Pro")
 							.attr("font-size", "80px")
 							.attr("fill", "white");
+							
 						userFoodRatingSVG.append("text")
 						.attr("x", userFoodRatingHeight/2)
 						.attr("y", 3*userFoodRatingWidth/5)
@@ -165,6 +166,7 @@
 				  		.attr("font-family", "Source Sans Pro")
 							.attr("font-size", "30px")
 							.attr("fill", "white");
+
 						userFoodRatingSVG.append("text")
 						.attr("x", userFoodRatingHeight/2)
 						.attr("y", 3*userFoodRatingWidth/5 + 30)
