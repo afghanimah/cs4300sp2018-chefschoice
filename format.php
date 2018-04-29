@@ -126,6 +126,7 @@
 		arsort($nutrientAmounts);
 		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something like thesaurus.com
 
+
 		 $score = 0.2;
 		 $rating = NULL;
 		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
@@ -159,7 +160,7 @@
 						userFoodRatingSVG.append("text")
 						.attr("x", userFoodRatingHeight/2)
 						.attr("y", 3*userFoodRatingWidth/5)
-						.text("<?php echo $foodInput; ?> is a")
+						.text("<?php echo $foodInput; echo ((substr($foodInput,-1) == "s") ? " are" : " is"); ?> a")
 						.style("alignment-baseline", "hanging")
 						.style("text-anchor", "middle")
 				  		.attr("font-family", "Source Sans Pro")
@@ -214,7 +215,7 @@
 						userFoodOptimalMoodSVG.append("text")
 						.attr("x", userFoodRatingHeight/2)
 						.attr("y", userFoodRatingWidth/3 - 15)
-						.text("<?php echo $foodInput; ?> is best when")
+						.text("<?php echo $foodInput; echo ((substr($foodInput,-1) == "s") ? " are" : " is"); ?> best when")
 						.style("alignment-baseline", "hanging")
 						.style("text-anchor", "middle")
 					 		.attr("font-family", "Source Sans Pro")
