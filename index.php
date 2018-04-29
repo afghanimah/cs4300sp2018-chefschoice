@@ -189,7 +189,7 @@
 					 userFoodRatingSVG.append("text")
 					 .attr("x", userFoodRatingHeight/2)
 					 .attr("y", 3*userFoodRatingWidth/5)
-					 .text("<?php echo $foodInput; ?> is a")
+					 .text("<?php echo $foodInput; echo ((substr($foodInput,-1) == "s") ? " are" : " is");?> a")
 					 .style("alignment-baseline", "hanging")
 					 .style("text-anchor", "middle")
 						 .attr("font-family", "Source Sans Pro")
@@ -223,8 +223,8 @@
 					 var userFoodOptimalMoodHeight = 350;
 					 var userFoodOptimalMoodWidth = 350;
 					 var userFoodOptimalMoodSVG = d3.select("#userFoodOptimalMoodContainer").append("svg")
-																		 .attr("height", userFoodOptimalMoodHeight)
-																		 .attr("width", userFoodOptimalMoodWidth);
+					.attr("height", userFoodOptimalMoodHeight)
+					.attr("width", userFoodOptimalMoodWidth);
 
 					 userFoodOptimalMoodSVG.append("circle")
 					 .attr("class", "userFoodOptimalMood")

@@ -126,8 +126,10 @@
 		arsort($nutrientAmounts);
 		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something like thesaurus.com
 
+
 		 $score = 0.2;
 		 $rating = NULL;
 		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
 		 $optimalMood = "HAPPY";
-	}?>
+	}
+?>
