@@ -17,7 +17,6 @@
 	<title>Chef's Choice</title>
 </header>
 <body>
-
 	<div id="names_topright">
 		Abraham Ghanimah (afg63)
 		Abrahm Magana (adm264)
@@ -268,7 +267,7 @@
 						 <?php
 						 $imageExtension = explode(".", $item["image"]);
 						 ?>
-						 <a href="<?php echo $foodItem["sourceUrl"];?>">
+						 <a href="<?php echo $foodItem["sourceUrl"];?>" target="_blank">
 							 <div class="resultsImage">
 								 <img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
 							 </div>
