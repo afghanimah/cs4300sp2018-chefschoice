@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+<?php
+	$firstFoodItem = NULL;
+?>
+
 <html>
 <header>
 	<meta charset="UTF-8" />
@@ -15,7 +19,6 @@
 	<title>Chef's Choice</title>
 </header>
 <body>
-
 	<div id="names_topright">
 		Abraham Ghanimah (afg63)
 		Abrahm Magana (adm264)
@@ -67,7 +70,7 @@
 					</div>.
 
 					<div id="advanced-search">
-						<div id="adv-panel">Advanced Search</div>
+						<div id="adv-panel">Filter Recommendations</div>
 						<div id="slide">
 
 							<!-- <div class="group">
@@ -209,14 +212,25 @@
 								 .attr("fill", "white")
 								 .attr("word-wrap", "break-word");
 
-						 </script>
+						</script>
 					 <div id="userFoodNutrientsContainer">
 						 <h2>Top nutrients in <span id="foodInput"><?php echo $foodInput;?></span>: </h2>
 						 <ul>
 							 <?php
-							 foreach ($topNut as $nutr => $amt){
+							 $found = FALSE;
+							 $matchNutrient = "vitamin b";
+							 foreach (getNutrients($foodSearchItem) as $nutr => $amt){
 								 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
+								 if (in_array(strtolower($nutr), $moodFood) && !$found) {
+									 // echo "test";
+				 						$matchNutrient = strtolower($nutr);
+										// echo $matchNutrient;
+										$found = true;
+				 					}
 							 }
+							 // echo "match = " . $matchNutrient;
+							 // echo array_search($matchNutrient, $moodFood);
+							 $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
 							 ?>
 						 </ul>
 					 </div>
@@ -239,17 +253,18 @@
 							 .attr("x", userFoodRatingHeight/2)
 							 .attr("y", userFoodRatingWidth/2)
 							 .text("<?php echo $optimalMood; ?>")
+							 	.attr("id", "optimalMoodSVG")
 							 .style("alignment-baseline", "middle")
 							 .style("text-anchor", "middle")
 								 .attr("font-family", "Source Sans Pro")
-								 .attr("font-size", "70px")
+								 .attr("font-size", "60px")
 								 .attr("fill", "black")
 								 .attr("word-wrap", "break-word");
 
 							 userFoodOptimalMoodSVG.append("text")
 							 .attr("x", userFoodRatingHeight/2)
 							 .attr("y", userFoodRatingWidth/3 - 15)
-							 .text("<?php echo $foodInput; ?> is best when")
+							 .text("<?php echo $foodInput; echo ((substr($foodInput,-1) == "s") ? " are" : " is");?> best when")
 							 .style("alignment-baseline", "hanging")
 							 .style("text-anchor", "middle")
 								 .attr("font-family", "Source Sans Pro")
@@ -260,14 +275,17 @@
 				 </div>
 				 <?php
 				 //displays results from query
-				 foreach($parsedResponse["results"] as $item) {?>
-					 <?php $foodItem = getFoodByID($item["id"], $clientArray);?>
+				 foreach($parsedResponse["results"] as $item) {
+					 if ($firstFoodItem == NULL){
+						 $firstFoodItem = $item;
+					 }
+					 $foodItem = getFoodByID($item["id"], $clientArray);?>
 					 <div class="resultsCard">
 						 <?php
 						 $imageExtension = explode(".", $item["image"]);
 						 $ingredients = $foodItem["nutrition"]["ingredients"];
 						 ?>
-						 <a href="<?php echo $foodItem["sourceUrl"];?>">
+						 <a href="<?php echo $foodItem["sourceUrl"];?>" target="_blank">
 							 <div class="resultsImage">
 								 <img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
 							 </div>
@@ -275,7 +293,7 @@
 							 <div class="resultsText">
 								 <h1><?php echo $item["title"]?></h1>
 								 <ul>
-									 <li><span class="icon ion-thumbsup"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
+									 <li><span class="icon ion-thumbsup"></span><?php echo $foodItem["aggregateLikes"]?></span></li>
 									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
 									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
 								 </ul>
@@ -295,6 +313,25 @@
 									 }
 									 ?>
 								 </div>
+								 <ul>
+									 <?php
+									 $found = FALSE;
+									 $matchNutrient = "vitamin b";
+									 foreach (getNutrients($foodItem) as $nutr => $amt){
+										 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
+										 if (in_array(strtolower($nutr), $moodFood) && !$found) {
+											 // echo "test";
+						 						$matchNutrient = strtolower($nutr);
+												// echo $matchNutrient;
+												$found = true;
+						 					}
+									 }
+									 // echo "match = " . $matchNutrient;
+									 // echo array_search($matchNutrient, $moodFood);
+									 $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
+									 ?>
+								 </ul>
+
 								 <div id="ingredients-output">
 									 <h3>Ingredients:</h3>
 									 <div id="individual-ingredients">
@@ -311,6 +348,7 @@
 					 <?php
 				 };
 	 	 }?>
+
 
 	</div>
 </body>
