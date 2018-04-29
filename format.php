@@ -26,6 +26,11 @@
 		$intolerancesInput = filter_input(INPUT_POST, 'input-intolerances', FILTER_SANITIZE_STRING);
 		$typeInput = filter_input(INPUT_POST, 'input-type', FILTER_SANITIZE_STRING);
 
+		function getFoodByID($id, $clientArray) {
+			$response = Unirest\Request::get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".$id."/information?includeNutrition=true", $clientArray);
+			return json_decode(json_encode($response->body), true);
+		};
+
 		//standard link for unirest request
 		$getRequestLink = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
 
@@ -35,13 +40,10 @@
 
 		$getURL = $getRequestLink . "/recipes/search?";
 		if ($cuisineInput != ''){
-			echo '<script>console.log("cuisine not empty")</script>';
 			if ($first){
-				echo '<script>console.log("cuisine empty - if")</script>';
 				$getURL .= "cuisine=" . $cuisineInput;
 				$first = false;
 			} else {
-				echo '<script>console.log("cuisine empty - else")</script>';
 				$getURL .= "&cuisine=" . $cuisineInput;
 			}
 		}
@@ -82,6 +84,7 @@
 		}
 
 		// query required
+		// AB!!!! CHANGE FOOD INPUT HERE
 		if ($first){
 			$getURL .= "query=" . $foodInput;
 			$first = false;
@@ -98,7 +101,6 @@
 			}
 		}
 
-
 		// These code snippets use an open-source library. http://unirest.io/php
 		$response = Unirest\Request::get(
 			$getURL,
@@ -107,8 +109,27 @@
 		//encodes unirest object to json for iteration purposes
 		$parsedResponse = json_decode(json_encode($response->body), true);
 
-		//  Variable for the comparison score
-		 $score = 0.7;
+		// get results for food input
+		$foodURL = $getRequestLink . "/recipes/search?" . "query=" . $foodInput;
+		$foodResponse = Unirest\Request::get(
+			$foodURL,
+			  $clientArray);
+		$parsedFoodResp = json_decode(json_encode($foodResponse->body), JSON_PRETTY_PRINT);
+		$foodSearchItem = getFoodByID($parsedFoodResp["results"][0]["id"], $clientArray);
+
+		$nutrientAmounts = array();
+		foreach($foodSearchItem["nutrition"]["nutrients"] as $nutrientArr) {
+			if ($nutrientArr["title"] !== "Calories"){
+				$nutrientAmounts[$nutrientArr["title"]] = $nutrientArr["percentOfDailyNeeds"];
+			}
+		}
+		arsort($nutrientAmounts);
+		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something like thesaurus.com
+
+		 $score = 0.2;
+		 $rating = NULL;
+		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
+		 $optimalMood = "HAPPY";
 		 ?>
 		 <div id="dashboard">
 				<div id="userFoodRatingContainer"></div>
@@ -133,11 +154,38 @@
 						.style("alignment-baseline", "middle")
 						.style("text-anchor", "middle")
 			  			.attr("font-family", "Source Sans Pro")
-						.attr("font-size", "80px")
-						.attr("fill", "white");
+							.attr("font-size", "80px")
+							.attr("fill", "white");
+						userFoodRatingSVG.append("text")
+						.attr("x", userFoodRatingHeight/2)
+						.attr("y", 3*userFoodRatingWidth/5)
+						.text("<?php echo $foodInput; ?> is a")
+						.style("alignment-baseline", "hanging")
+						.style("text-anchor", "middle")
+				  		.attr("font-family", "Source Sans Pro")
+							.attr("font-size", "30px")
+							.attr("fill", "white");
+						userFoodRatingSVG.append("text")
+						.attr("x", userFoodRatingHeight/2)
+						.attr("y", 3*userFoodRatingWidth/5 + 30)
+						.text("<?php echo $rating; ?> choice!")
+						.style("alignment-baseline", "hanging")
+						.style("text-anchor", "middle")
+					 		.attr("font-family", "Source Sans Pro")
+							.attr("font-size", "30px")
+							.attr("fill", "white")
+							.attr("word-wrap", "break-word");
+
 					</script>
 				<div id="userFoodNutrientsContainer">
-					<h2>Nutrients in <span id="foodInput"><?php echo $foodInput;?></span>: </h2>
+					<h2>Top nutrients in <span id="foodInput"><?php echo $foodInput;?></span>: </h2>
+					<ul>
+						<?php
+						foreach ($topNut as $nutr => $amt){
+							echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
+						}
+						?>
+					</ul>
 				</div>
 				<div id="userFoodOptimalMoodContainer"></div>
 				<script>
@@ -152,17 +200,31 @@
 						.attr("cx", userFoodRatingHeight/2)
 						.attr("cy", userFoodRatingWidth/2)
 						.attr("r", 150)
-						.style("fill", "white");
+							.style("fill", "bisque");
+						userFoodOptimalMoodSVG.append("text")
+						.attr("x", userFoodRatingHeight/2)
+						.attr("y", userFoodRatingWidth/2)
+						.text("<?php echo $optimalMood; ?>")
+						.style("alignment-baseline", "middle")
+						.style("text-anchor", "middle")
+							.attr("font-family", "Source Sans Pro")
+							.attr("font-size", "70px")
+							.attr("fill", "black")
+							.attr("word-wrap", "break-word");
+						userFoodOptimalMoodSVG.append("text")
+						.attr("x", userFoodRatingHeight/2)
+						.attr("y", userFoodRatingWidth/3 - 15)
+						.text("<?php echo $foodInput; ?> is best when")
+						.style("alignment-baseline", "hanging")
+						.style("text-anchor", "middle")
+					 		.attr("font-family", "Source Sans Pro")
+							.attr("font-size", "25px")
+							.attr("fill", "black")
+							.attr("word-wrap", "break-word");
 					</script>
 			</div>
 
 		<?php
-
-		function getFoodByID($id, $clientArray) {
-			$response = Unirest\Request::get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/".$id."/information?includeNutrition=true", $clientArray);
-			return json_decode(json_encode($response->body), true);
-	};
-
 
 		//displays results from query
 		foreach($parsedResponse["results"] as $item) {?>

@@ -70,16 +70,16 @@
 						<div id="adv-panel">Advanced Search</div>
 						<div id="slide">
 
-							<div class="group">
+							<!-- <div class="group">
 								<input type="text" name="input-nutrient" placeholder=""/>
 								<span class="bar"></span>
 								<label>[nutrient]</label>
-							</div>
+							</div> -->
 
 							<div class="group">
 								<input type="text" name="input-exclude" placeholder=""/>
 								<span class="bar"></span>
-								<label>[exclude]</label>
+								<label>[exclude eggs, milk, ...]</label>
 							</div>
 
 							<br />

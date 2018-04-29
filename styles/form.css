@@ -79,6 +79,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 }
 #adv-panel:hover {
 	color: #B81A2E;
+  cursor: pointer;
 }
 #slide {
 	display: none;
@@ -88,7 +89,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   font-size:15px;
   padding:5px 5px 5px 2px;
   display:block;
-  width:100px;
+  width:300px;
   border:none;
   border-bottom:1px solid #757575;
   background: transparent;
@@ -120,7 +121,9 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   color:#B81A2E;
 }
 #slide .bar {
-  position:relative; display:block; width:100px;
+  position:relative;
+  display:block;
+  width:300px;
 }
 #slide .bar:before {
   content:'';

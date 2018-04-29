@@ -197,3 +197,7 @@ span::nth-of-type(2){
  #chef_bottomright img{
  	width: 15vh;
  }
+
+#userFoodNutrientsContainer li {
+	display: block;
+}
