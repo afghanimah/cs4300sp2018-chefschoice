@@ -4,17 +4,17 @@
 	include ('src/SpoonacularAPIClient.php');
 	include ("includes/apikey.php");
 
+	$mfJSON = `python3 scripts/search.py`;
+	$moodFood = json_decode($mfJSON, true);
 
 	use SpoonacularAPILib\SpoonacularAPIClient;
 	// Configuration parameters
 	$xMashapeKey = $API_KEY; // The Mashape application you want to use for this session.
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
-
 	// $ppl = new SpoonacularAPIClient("Johanna");
 	$client = $client->getClient();
 	$clientArray = array("X-Mashape-Key" => $API_KEY,"Accept" => "application/json");
-
 
 	if ($_POST['submit-query']) {
 		$foodInput = filter_input(INPUT_POST, 'input-food', FILTER_SANITIZE_STRING);
@@ -86,10 +86,10 @@
 		// query required
 		// AB!!!! CHANGE FOOD INPUT HERE
 		if ($first){
-			$getURL .= "query=" . $foodInput;
+			$getURL .= "query=" . $moodFood[$moodInput];
 			$first = false;
 		} else {
-			$getURL .= "&query=" . $foodInput;
+			$getURL .= "&query=" . $moodFood[$moodInput];
 		}
 
 		if ($typeInput != ''){
@@ -124,12 +124,14 @@
 			}
 		}
 		arsort($nutrientAmounts);
-		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something like thesaurus.com
-
+		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something looking like thesaurus.com
 
 		 $score = 0.2;
 		 $rating = NULL;
 		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
 		 $optimalMood = "HAPPY";
+	} else {
+		unset($_SESSION["mood"]);
+		unset($_SESSION["food"]);
 	}
 ?>
