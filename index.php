@@ -1,5 +1,3 @@
-<!-- Main Page -->
-<?php include('includes/init.php'); ?>
 <!DOCTYPE html>
 
 <html>
@@ -56,14 +54,14 @@
 								}
 							}
 						</script>
-						<input type="text" name="input-mood" id="mood" onkeyup="autosuggest(this.value)" required>
+						<input type="text" name="input-mood" id="mood" onkeyup="autosuggest(this.value)" value="<?php echo (isset($_POST['submit-query']) ? $_POST["input-mood"] : ""); ?>" required>
 						<span class="bar"></span>
 						<label>[mood]</label>
 					</div>,
 					<br />
 					I eat
 					<div class="group">
-						<input type="text" name="input-food" required>
+						<input type="text" name="input-food" value="<?php echo (isset($_POST['submit-query']) ? $_POST["input-food"] : ""); ?>" required>
 						<span class="bar"></span>
 						<label>[food]</label>
 					</div>.

@@ -6,6 +6,7 @@ import numpy as np
 import sys
 import math
 import Levenshtein  # package python-Levenshtein
+import json
 
 # Extracts list of feelings from WeFeelFine API: http://wefeelfine.org/api.html
 def get_feelings():
@@ -86,13 +87,12 @@ def autocorrect(source, data, num_results):
 	return ranked_results[:num_results]
 
 moods = {
-	'anger': 'magnesium',
-	'disgust': 'omega 3',
-	'fear': 'tryptophan',
-	'lazy': 'caffeine',
-	'surprise': 'manganese',
-	'sadness': 'vitamin d',
-	'joy': 'vitamin b6',
+	'angry': 'magnesium',
+	'disgusted': 'fat',
+	'frightened': 'carbs',
+	'surprised': 'manganese',
+	'sad': 'vitamin d',
+	'happy': 'vitamin b'
 }
 
 cuisines_dict = {
@@ -218,6 +218,11 @@ def js_test():
 	results = [["curry","powder","extravirgin","olive","oil","garlic","clove","garlic","cloves","ground","cumin","fresh","lemon","juice","pitas","low","fat","plain","greek","yogurt","romaine","lettuce","salt","skinless","boneless","chicken","breast","tahini","tomato"]]
 	mat = create_j_sim_mat(results)
 	print_results(mat)
+
+def main():
+	print(json.dumps(moods))
+
+main()
 
 # def format_input(food, mood, nutri):
 # 	return food + " " + mood + " " + nutri
