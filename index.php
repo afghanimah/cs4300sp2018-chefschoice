@@ -159,7 +159,10 @@
 	</div>
 
 	<div id="results">
-		<?php include('format.php');?>
+		<?php
+			include('format.php');
+			if ($_POST['submit-query']) {
+		?>
 		<div id="dashboard">
 			 <div id="userFoodRatingContainer"></div>
 				 <script>
@@ -286,7 +289,8 @@
 				 </div>
 			 </div>
 			 <?php
-		 };?>
+		 };
+	 }?>
 
 	</div>
 </body>
