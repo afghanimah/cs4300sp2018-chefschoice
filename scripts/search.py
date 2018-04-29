@@ -92,7 +92,7 @@ moods = {
 	'frightened': 'carbs',
 	'surprised': 'manganese',
 	'sad': 'vitamin d',
-	'happy': 'vitamin b6',
+	'happy': 'vitamin b'
 }
 
 def main():

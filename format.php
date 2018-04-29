@@ -12,7 +12,6 @@
 	$xMashapeKey = $API_KEY; // The Mashape application you want to use for this session.
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
-
 	// $ppl = new SpoonacularAPIClient("Johanna");
 	$client = $client->getClient();
 	$clientArray = array("X-Mashape-Key" => $API_KEY,"Accept" => "application/json");
@@ -127,10 +126,12 @@
 		arsort($nutrientAmounts);
 		$topNut = array_slice($nutrientAmounts, 0, 7, true);	// change this later to something looking like thesaurus.com
 
-
 		 $score = 0.2;
 		 $rating = NULL;
 		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
 		 $optimalMood = "HAPPY";
+	} else {
+		unset($_SESSION["mood"]);
+		unset($_SESSION["food"]);
 	}
 ?>
