@@ -27,7 +27,7 @@
 						<script>
 							function autosuggest(str) {
 								console.log(str);
-								if (str.length == 0) { 
+								if (str.length == 0) {
 									console.log("_blank")
 									return;
 								} else {
