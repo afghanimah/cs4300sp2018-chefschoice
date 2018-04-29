@@ -265,6 +265,7 @@
 					 <div class="resultsCard">
 						 <?php
 						 $imageExtension = explode(".", $item["image"]);
+						 $ingredients = $foodItem["nutrition"]["ingredients"];
 						 ?>
 						 <a href="<?php echo $foodItem["sourceUrl"];?>">
 							 <div class="resultsImage">
@@ -278,11 +279,27 @@
 									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
 									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
 								 </ul>
+								 <div id = "lda-tags">
+									 <?php
+									 $ingred_list_as_string = "";
+									 foreach($ingredients as $ingredient) {
+										$ingred_list_as_string = $ingred_list_as_string . $ingredient["name"] . " ";
+									 }
+									 $ingred_list_as_string = trim($ingred_list_as_string);
+									 $command = escapeshellcmd("python3 scripts/jaccard.py '" . $ingred_list_as_string . "'");
+									 $output = shell_exec($command);
+									 $cuisine_scores = explode(",", $output);
+									 foreach($cuisine_scores as $pair) {
+										 $split = explode("|", $pair);
+										 echo $split[0] . " : " . $split[1] . "<br>";
+									 }
+									 ?>
+								 </div>
 								 <div id="ingredients-output">
 									 <h3>Ingredients:</h3>
 									 <div id="individual-ingredients">
 										 <?php
-										 foreach($foodItem["nutrition"]["ingredients"] as $ingredient){
+										 foreach($ingredients as $ingredient){
 											 echo "<h2>".$ingredient["name"]."</h2>";
 										 } ?>
 									 </div>
