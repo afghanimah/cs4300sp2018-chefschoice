@@ -87,7 +87,7 @@ input[type=submit]:active {
 }
 
 #dashboard {
-	height: 500px;
+	height: 450px;
 	width: 100%;
 	margin: 20px;
 	display: flex;
@@ -106,7 +106,7 @@ input[type=submit]:active {
 }
 
 #userFoodNutrientsContainer {
-	background: rgba(255, 255, 255, 0.6);
+	background: rgba(255, 255, 255, 0.8);
 	border-radius: 10%;
 	font-size: 25px;
 }
@@ -117,6 +117,7 @@ input[type=submit]:active {
 
 .resultsCard{
 	height: 420px;
+
 	width: 654px;
 	margin: 30px auto;
 	border-radius: 7px 7px 7px 7px;
@@ -150,24 +151,49 @@ input[type=submit]:active {
 }
 
 .resultsText h1{
-	margin: 10px 0 0 20px;
+	margin: 0 0 0 38px;
+	padding-top: 15px;
 	font-size: 34px;
 	color: #474747;
 }
 
+ul {
+	list-style: none;
+	margin: 0.5em 0 0;
+	padding: 0;
+}
+
+li {
+	display: inline-block;
+	margin-left: 1em;
+	line-height: 1em;
+
+}
+
+span::nth-of-type(2){
+	margin-left: 0.5em;
+	font-size: 0.8em;
+	font-weight: 300;
+	vertical-align: middle;
+	color: #838689;
+
+}
+
 #names_topright{
-	color: white;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 200px;
-	text-align:right;
-}
-#chef_bottomright {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-}
-#chef_bottomright img{
-	width: 15vh;
-}
+ 	color: white;
+ 	position: absolute;
+ 	top: 0;
+ 	right: 0;
+ 	width: 200px;
+ 	text-align:right;
+ }
+
+ #chef_bottomright {
+ 	position: fixed;
+ 	bottom: 0;
+ 	left: 0;
+ }
+
+ #chef_bottomright img{
+ 	width: 15vh;
+ }

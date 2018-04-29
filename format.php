@@ -177,9 +177,12 @@
 					<div class="resultsText">
 						<?php $foodItem = getFoodByID($item["id"], $clientArray);?>
 						<h1><?php echo $item["title"]?></h1>
-						<h2><?php echo "Likes: ".$foodItem["aggregateLikes"]?></h2>
-						<h2><?php echo "Score: ".$foodItem["spoonacularScore"]?></h2>
-						<h2><?php echo "Health Score: ".$foodItem["healthScore"]?></h2>
+						<ul>
+							<li><span class="icon icon-Likes"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
+							<li><span class="icon icon-Likes"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
+							<li><span class="icon icon-Likes"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
+						</ul>
+
 					</div>
 				</div>
 			</div>
