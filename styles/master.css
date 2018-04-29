@@ -171,3 +171,22 @@ span::nth-of-type(2){
 	color: #838689;
 
 }
+
+#names_topright{
+ 	color: white;
+ 	position: absolute;
+ 	top: 0;
+ 	right: 0;
+ 	width: 200px;
+ 	text-align:right;
+ }
+
+ #chef_bottomright {
+ 	position: fixed;
+ 	bottom: 0;
+ 	left: 0;
+ }
+
+ #chef_bottomright img{
+ 	width: 15vh;
+ }
