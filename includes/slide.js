@@ -24,6 +24,7 @@ $('.md-select ul li').on('click', function() {
   $('.md-select label button').text(v)
 })
 
+/////////////////// DROPDOWN STUFF ///////////////////
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");
@@ -97,5 +98,13 @@ function closeAllSelect(elmnt) {
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 
+
+/////////////////// AUTOCOMPLETE STUFF ///////////////////
+$('#input-mood').keyup(function() {
+  suggs = autosuggest($('#input-mood').val());
+  $('#input-mood').autocomplete({
+    source: suggs
+  });
+});
 
 });
