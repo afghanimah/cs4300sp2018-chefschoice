@@ -273,7 +273,7 @@
 							 <div class="resultsText">
 								 <h1><?php echo $item["title"]?></h1>
 								 <ul>
-									 <li><span class="icon ion-thumbsup"></span><?php echo "Likes: ".$foodItem["aggregateLikes"]?></span></li>
+									 <li><span class="icon ion-thumbsup"></span><?php echo $foodItem["aggregateLikes"]?></span></li>
 									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
 									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
 								 </ul>
