@@ -124,6 +124,15 @@
 		$parsedFoodResp = json_decode(json_encode($foodResponse->body), JSON_PRETTY_PRINT);
 		$foodSearchItem = getFoodByID($parsedFoodResp["results"][0]["id"], $clientArray);
 
+		//look for happy tostada or happy food? (tostada is example)
+		//in the case of just the mood, we can hard code it
+		$foodURL_mood = $getRequestLink . "/recipes/search?" . "query=" . $foodInput . "+" . $m;
+		$foodResponse_mood = Unirest\Request::get(
+			$foodURL_mood,
+			  $clientArray);
+		$parsedFoodResp_mood = json_decode(json_encode($foodResponse_mood->body), JSON_PRETTY_PRINT);
+		$foodSearchItem_mood = getFoodByID($parsedFoodResp_mood["results"][0]["id"], $clientArray);
+
 		function getNutrients($foodItem){
 			$nutrientAmounts = array();
 			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
@@ -138,9 +147,34 @@
 			return $topNut;
 		}
 
-		 $score = 0.2;
-		 $rating = NULL;
-		 ($score >= 0.6) ? $rating = "good" : $rating = "bad";
+		function getNutrients_all($foodItem){
+			$nutrientAmounts = array();
+			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
+				if ($nutrientArr["title"] !== "Calories"){
+					$nutrientAmounts[$nutrientArr["title"]] = $nutrientArr["percentOfDailyNeeds"];
+				}
+			}
+
+			arsort($nutrientAmounts);
+
+			return $nutrientAmounts;
+		}
+
+		$user = getNutrients_all($foodSearchItem);
+		$ours = getNutrients_all($foodSearchItem_mood);
+
+		$m_to_nutrient = [
+			"magnesium" => "Magnesium",
+			"fat" => "Fat",
+			"carbohydrates" => "Carbohydrates",
+			"manganese" => "Manganese",
+			"vitamin+d" => "Vitamin D",
+			"vitamin+b" => "Vitamin B6"
+		];
+		
+		$score = min(array(round($user[$m_to_nutrient[$m]] / $ours[$m_to_nutrient[$m]], 2), 1));
+		$rating = NULL;
+		($score >= 0.6) ? $rating = "good" : $rating = "bad";
 	} else {
 		unset($_SESSION["mood"]);
 		unset($_SESSION["food"]);
