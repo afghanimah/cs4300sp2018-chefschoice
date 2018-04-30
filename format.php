@@ -119,16 +119,17 @@
 		$foodSearchItem = getFoodByID($parsedFoodResp["results"][0]["id"], $clientArray);
 
 		function getNutrients($foodItem){
+
 			$nutrientAmounts = array();
 			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
 				if ($nutrientArr["title"] !== "Calories"){
 					$nutrientAmounts[$nutrientArr["title"]] = $nutrientArr["percentOfDailyNeeds"];
 				}
 			}
-			
+
 			arsort($nutrientAmounts);
 			$topNut = array_slice($nutrientAmounts, 0, 5, true); //Change later to be more like thesaurus
-
+			array_push($topNut, $moodInput);
 			return $topNut;
 		}
 

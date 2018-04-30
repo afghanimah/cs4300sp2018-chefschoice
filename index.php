@@ -288,13 +288,14 @@
 							 <div class="resultsImage">
 								 <img src=<?php echo "https://webknox.com/recipeImages/".$item["id"]."-556x370.".$imageExtension[1]?> alt="results image">
 							 </div>
+						 </a>
 						 <div class="resultsInfo">
 							 <div class="resultsText">
 								 <h1><?php echo $item["title"]?></h1>
 								 <ul>
-									 <li><span class="icon ion-thumbsup"></span><?php echo $foodItem["aggregateLikes"]?></span></li>
-									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></span></li>
-									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></span></li>
+									 <li><span class="icon ion-thumbsup"></span><?php echo $foodItem["aggregateLikes"]?></li>
+									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></li>
+									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></li>
 								 </ul>
 								 <ul>
 									 <?php
@@ -323,10 +324,9 @@
 											 echo "<h2>".$ingredient["name"]."</h2>";
 										 } ?>
 									 </div>
-								 </div>
+							 </div>
 							 </div>
 						 </div>
-					 </a>
 				 </div>
 					 <?php
 				 };
