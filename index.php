@@ -219,7 +219,7 @@
 						 <ul>
 							 <?php
 							 $found = FALSE;
-							 $matchNutrient = "vitamin b";
+							 $matchNutrient = "vitamin b6";
 							 foreach (getNutrients($foodSearchItem) as $nutr => $amt){
 								 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
 								 if (in_array(strtolower($nutr), $moodFood) && !$found) {
@@ -230,6 +230,7 @@
 				 					}
 							 }
 							 // echo "match = " . $matchNutrient;
+							 // var_dump($moodFood);
 							 // echo array_search($matchNutrient, $moodFood);
 							 $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
 							 ?>
@@ -317,18 +318,18 @@
 								 </div>
 								 <ul>
 									 <?php
-									 $found = FALSE;
-									 $matchNutrient = "vitamin b";
+									 // $found = FALSE;
+									 // $matchNutrient = "vitamin b";
 									 foreach (getNutrients($foodItem) as $nutr => $amt){
 										 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
-										 if (in_array(strtolower($nutr), $moodFood) && !$found) {
-											 echo "in if";
-						 						$matchNutrient = strtolower($nutr);
-												$found = true;
-						 					}
+										 // if (in_array(strtolower($nutr), $moodFood) && !$found) {
+											 // echo "in if";
+						 						// $matchNutrient = strtolower($nutr);
+												// $found = true;
+						 					// }
 									 }
-									 echo "matach = " . $matchNutrient;
-									 $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
+									 // echo "match = " . $matchNutrient;
+									 // $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
 									 ?>
 								 </ul>
 
