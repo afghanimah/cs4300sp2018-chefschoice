@@ -8,6 +8,7 @@
 <header>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="sortcut icon" type="image/png" href="images/favicon.png"/>
 	<link rel="stylesheet" type="text/css" href="styles/ionicons-2.0.1/css/ionicons.min.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="styles/master.css" media="all"/>
 	<link rel="stylesheet" type="text/css" href="styles/form.css" media="all"/>
@@ -292,11 +293,11 @@
 						 </a>
 						 <div class="resultsInfo">
 							 <div class="resultsText">
-								 <h1><?php echo $item["title"]?></h1>
+								 <h1><a href="<?php echo $foodItem["sourceUrl"];?>" target="_blank"><?php echo $item["title"]?></a></h1>
 								 <ul>
 									 <li><span class="icon ion-thumbsup"></span><?php echo $foodItem["aggregateLikes"]?></li>
 									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></li>
-									 <li><span class="icon ion-heart"></span><?php echo "Health Score: ".$foodItem["healthScore"]?></li>
+									 <li><span class="icon ion-heart"></span><?php echo "Health: ".$foodItem["healthScore"]?></li>
 								 </ul>
 								 <div id = "lda-tags">
 									 <?php
@@ -310,7 +311,7 @@
 									 $cuisine_scores = explode(",", $output);
 									 foreach($cuisine_scores as $pair) {
 										 $split = explode("|", $pair);
-										 echo $split[0] . " : " . $split[1] . "<br>";
+										 echo $split[0] . " : " . round($split[1], 3) . "<br>";
 									 }
 									 ?>
 								 </div>
@@ -321,14 +322,12 @@
 									 foreach (getNutrients($foodItem) as $nutr => $amt){
 										 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
 										 if (in_array(strtolower($nutr), $moodFood) && !$found) {
-											 // echo "test";
+											 echo "in if";
 						 						$matchNutrient = strtolower($nutr);
-												// echo $matchNutrient;
 												$found = true;
 						 					}
 									 }
-									 // echo "match = " . $matchNutrient;
-									 // echo array_search($matchNutrient, $moodFood);
+									 echo "matach = " . $matchNutrient;
 									 $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
 									 ?>
 								 </ul>

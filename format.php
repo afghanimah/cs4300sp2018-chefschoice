@@ -134,7 +134,7 @@
 			}
 
 			arsort($nutrientAmounts);
-			$topNut = array_slice($nutrientAmounts, 0, 5, true); //Change later to be more like thesaurus
+			$topNut = array_slice($nutrientAmounts, 0, 6, true); //Change later to be more like thesaurus
 			array_push($topNut, $moodInput);
 			return $topNut;
 		}
