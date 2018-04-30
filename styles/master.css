@@ -139,6 +139,13 @@ a {
  	width: 350px;
 }
 
+.resultsImage img:hover {
+	position: absolute;
+	clip: rect(0px,350px,420px,0px);
+	-webkit-filter: brightness(0.2);
+	filter: brightness(0.7);
+}
+
 .resultsImage img{
 	border-radius: 7px 0 0 7px;
 }
@@ -164,21 +171,28 @@ a {
 	color: #474747;
 }
 
+.resultsText a:hover {
+	color: #70000D;
+	cursor: pointer;
+}
+
 #ingredients-output {
 	margin: 1em;
 }
 
 #ingredients-output h3 {
 	font-size: 32px;
+	margin: 10px 0px;
 }
 
 #ingredients-output h2 {
-	font-size: 24px;
+	font-size: 18px;
+	margin: 0px;
 }
 
 #individual-ingredients {
 	margin: 2px 0px;
-  margin-left: 25px;
+  margin-left: 0px;
 	border-left: 2px solid #E3E3E3;
 	padding-left: 20px;
 	text-align: left;

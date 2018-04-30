@@ -134,6 +134,7 @@
 		$foodSearchItem_mood = getFoodByID($parsedFoodResp_mood["results"][0]["id"], $clientArray);
 
 		function getNutrients($foodItem){
+
 			$nutrientAmounts = array();
 			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
 				if ($nutrientArr["title"] !== "Calories"){
@@ -142,8 +143,8 @@
 			}
 
 			arsort($nutrientAmounts);
-			$topNut = array_slice($nutrientAmounts, 0, 5, true); //Change later to be more like thesaurus
-
+			$topNut = array_slice($nutrientAmounts, 0, 6, true); //Change later to be more like thesaurus
+			array_push($topNut, $moodInput);
 			return $topNut;
 		}
 
