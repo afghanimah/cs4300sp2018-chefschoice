@@ -125,7 +125,8 @@
 		$foodSearchItem = getFoodByID($parsedFoodResp["results"][0]["id"], $clientArray);
 
 		function getNutrients($foodItem){
-
+			global $moodInput;
+			
 			$nutrientAmounts = array();
 			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
 				if ($nutrientArr["title"] !== "Calories"){

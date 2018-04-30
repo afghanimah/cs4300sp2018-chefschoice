@@ -186,13 +186,13 @@ a {
 	color: #565656;
 }
 
-ul {
+ul, #lda-tags {
 	list-style: none;
 	margin: 0.5em 0 0;
 	padding: 0;
 }
 
-li {
+li, #lda-tags {
 	display: inline-block;
 	margin-left: 1em;
 	line-height: 1em;
