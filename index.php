@@ -37,7 +37,7 @@
 
 			<form method="post" action="index.php" name="search-form">
 				<div class="center">
-					When I am
+					When I feel
 					<div class="group">
 						<script>
 							function autosuggest(str) {
@@ -190,7 +190,7 @@
 							 .style("text-anchor", "middle")
 								 .attr("font-family", "Source Sans Pro")
 								 .attr("font-size", "80px")
-								 .attr("fill", "white");
+								 .attr("fill", "black");
 
 							 userFoodRatingSVG.append("text")
 							 .attr("x", userFoodRatingHeight/2)
@@ -200,7 +200,7 @@
 							 .style("text-anchor", "middle")
 								 .attr("font-family", "Source Sans Pro")
 								 .attr("font-size", "30px")
-								 .attr("fill", "white");
+								 .attr("fill", "black");
 
 							 userFoodRatingSVG.append("text")
 							 .attr("x", userFoodRatingHeight/2)
@@ -210,7 +210,7 @@
 							 .style("text-anchor", "middle")
 								 .attr("font-family", "Source Sans Pro")
 								 .attr("font-size", "30px")
-								 .attr("fill", "white")
+								 .attr("fill", "black")
 								 .attr("word-wrap", "break-word");
 
 						</script>
@@ -300,6 +300,15 @@
 									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></li>
 									 <li><span class="icon ion-heart"></span><?php echo "Health: ".$foodItem["healthScore"]?></li>
 								 </ul>
+
+								 <div id="recipe-nutrients">
+										<?php
+										foreach (getNutrients($foodItem) as $nutr => $amt){
+									 		echo $nutr . " (" . $amt . "% DV)<br/>";
+										}
+										?>
+								 </div>
+
 								 <div id = "lda-tags">
 									 <?php
 									 $ingred_list_as_string = "";
@@ -316,22 +325,6 @@
 									 }
 									 ?>
 								 </div>
-								 <ul>
-									 <?php
-									 // $found = FALSE;
-									 // $matchNutrient = "vitamin b";
-									 foreach (getNutrients($foodItem) as $nutr => $amt){
-										 echo "<li>" . $nutr . " (" . $amt . "% DV)</li>";
-										 // if (in_array(strtolower($nutr), $moodFood) && !$found) {
-											 // echo "in if";
-						 						// $matchNutrient = strtolower($nutr);
-												// $found = true;
-						 					// }
-									 }
-									 // echo "match = " . $matchNutrient;
-									 // $optimalMood = strtoupper(array_search($matchNutrient, $moodFood));
-									 ?>
-								 </ul>
 
 								 <div id="ingredients-output">
 									 <h3>Ingredients:</h3>

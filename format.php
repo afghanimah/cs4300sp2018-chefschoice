@@ -134,6 +134,7 @@
 		$foodSearchItem_mood = getFoodByID($parsedFoodResp_mood["results"][0]["id"], $clientArray);
 
 		function getNutrients($foodItem){
+			global $moodInput;
 
 			$nutrientAmounts = array();
 			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
@@ -172,7 +173,7 @@
 			"vitamin+d" => "Vitamin D",
 			"vitamin+b" => "Vitamin B6"
 		];
-		
+
 		$score = min(array(round($user[$m_to_nutrient[$m]] / $ours[$m_to_nutrient[$m]], 2), 1));
 		$rating = NULL;
 		($score >= 0.6) ? $rating = "good" : $rating = "bad";
