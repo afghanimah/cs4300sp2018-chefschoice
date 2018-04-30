@@ -85,12 +85,18 @@
 
 		// query required
 		// AB!!!! CHANGE FOOD INPUT HERE
-		$m = ($moodFood[$moodInput] == 'vitamin b6') ? 'vitamin b' : $moodFood[$moodInput];
+		$m = $moodFood[$moodInput];
+		if ($moodFood[$moodInput] == 'vitamin b6') {
+			$m = 'vitamin+b';
+		} else if ($moodFood[$moodInput] == 'vitamin d'){
+			$m = 'vitamin+d';
+		}
+
 		if ($first){
-			$getURL .= "query=" . $m;
+			$getURL .= "query=" . $foodInput . "+" . $m;
 			$first = false;
 		} else {
-			$getURL .= "&query=" . $m;
+			$getURL .= "&query=" . $foodInput . "+" . $m;
 		}
 
 		if ($typeInput != ''){
