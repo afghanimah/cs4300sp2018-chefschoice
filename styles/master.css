@@ -200,13 +200,13 @@ a {
 	color: #565656;
 }
 
-ul, #lda-tags {
+ul{
 	list-style: none;
 	margin: 0.5em 0 0;
 	padding: 0;
 }
 
-li, #lda-tags {
+li{
 	display: inline-block;
 	margin-left: 1em;
 	line-height: 1em;
