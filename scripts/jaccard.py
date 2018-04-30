@@ -119,7 +119,7 @@ def get_top_k_results(mat, k=5):
         cuisine = cuisines_labels[cuisines_lst[i]]
         score = str(arr[i])
         results += cuisine + "|" + score + ","
-    print(results[:-1])
+    return results[:-1]
 
 def print_results(mat):
 	for i in range(0, len(mat)):
