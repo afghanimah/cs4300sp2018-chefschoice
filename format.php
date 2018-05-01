@@ -12,7 +12,6 @@
 	$xMashapeKey = $API_KEY; // The Mashape application you want to use for this session.
 	$client = new SpoonacularAPIClient($xMashapeKey);
 
-	// $ppl = new SpoonacularAPIClient("Johanna");
 	$client = $client->getClient();
 	$clientArray = array("X-Mashape-Key" => $API_KEY,"Accept" => "application/json");
 
