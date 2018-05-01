@@ -297,8 +297,8 @@
 								 <h1><a href="<?php echo $foodItem["sourceUrl"];?>" target="_blank"><?php echo $item["title"]?></a></h1>
 								 <ul>
 									 <li><span class="icon ion-thumbsup"></span><?php echo $foodItem["aggregateLikes"]?></li>
-									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"]?></li>
-									 <li><span class="icon ion-heart"></span><?php echo "Health: ".$foodItem["healthScore"]?></li>
+									 <li><span class="icon ion-trophy"></span><?php echo "Score: ".$foodItem["spoonacularScore"] . "%"?></li>
+									 <li><span class="icon ion-heart"></span><?php echo "Health: ".$foodItem["healthScore"] . "%"?></li>
 								 </ul>
 
 								 <div id="recipe-nutrients">
