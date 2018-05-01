@@ -4,7 +4,7 @@
 	include ('src/SpoonacularAPIClient.php');
 	include ("includes/apikey.php");
 
-	$mfJSON = `python3 scripts/search.py`;
+	$mfJSON = `python3 scripts/main.py`;
 	$moodFood = json_decode($mfJSON, true);
 
 	use SpoonacularAPILib\SpoonacularAPIClient;
