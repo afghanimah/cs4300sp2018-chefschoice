@@ -173,8 +173,11 @@
 			"vitamin+d" => "Vitamin D",
 			"vitamin+b" => "Vitamin B6"
 		];
-
-		$score = min(array(round($user[$m_to_nutrient[$m]] / $ours[$m_to_nutrient[$m]], 2), 1));
+		$denom = $ours[$m_to_nutrient[$m]];
+		if ($denom == 0) {
+			$denom = 0.01;
+		}
+		$score = min(array(round($user[$m_to_nutrient[$m]] / $denom, 2), 1));
 		$rating = NULL;
 		($score >= 0.6) ? $rating = "good" : $rating = "bad";
 	} else {
