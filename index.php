@@ -28,7 +28,16 @@
 	</div>
 
 	<div id="chef_bottomright">
-		<img src="images/chef.png" alt="Cartoon chef" />
+		<div class="tooltip">
+			<img src="images/chef.png" alt="Cartoon chef" />
+			<span class="tooltiptext">
+				The "Likes" are all the likes for the particular recipe from the Spoonacular
+				community. The scores are calculated by Spoonacular.<br>
+				The Trophy represents the overall Spoonacular Score which is calculated by comparing
+				the recipe with all the other recipes on the Spoonacular site. <br>
+				The Spoonacular Health Score takes into account the recipe's nutritional value.
+			</span>
+		</div>
 	</div>
 
 	<div id='contentContainer'>
