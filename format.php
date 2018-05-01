@@ -135,6 +135,7 @@
 
 		function getNutrients($foodItem){
 			global $moodInput;
+			global $moodFood;
 
 			$nutrientAmounts = array();
 			foreach($foodItem["nutrition"]["nutrients"] as $nutrientArr) {
@@ -142,10 +143,9 @@
 					$nutrientAmounts[$nutrientArr["title"]] = $nutrientArr["percentOfDailyNeeds"];
 				}
 			}
-
 			arsort($nutrientAmounts);
-			$topNut = array_slice($nutrientAmounts, 0, 6, true); //Change later to be more like thesaurus
-			array_push($topNut, $moodInput);
+			$topNut = array_slice($nutrientAmounts, 0, 5, true); //Change later to be more like thesaurus
+			array_push($topNut, $nutrients[$moodFood[strtolower($moodInput)]]);
 			return $topNut;
 		}
 
