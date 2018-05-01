@@ -85,7 +85,7 @@
 		// query required
 		// AB!!!! CHANGE FOOD INPUT HERE
 		$mood = `python3 scripts/search.py $moodInput`;
-		echo '<script>console.log("' . $mood . '")</script>';
+		echo '<script>console.log("' . trim($mood) . '")</script>';
 		$m = $moodFood[trim($mood)];
 		echo '<script>console.log("' . $m . '")</script>';
 		if ($moodFood[trim($mood)] == 'vitamin b6') {
