@@ -183,6 +183,8 @@ def sims_jac(mood_input):
 		mat[i] = intersect/union
 	return moods[np.argmax(mat, axis=0)]
 
+print(sims_jac(sys.argv[1]));
+
 # def get_similar_mood(mood_input):
 # 	""" Returns the most similar mood in [mood_nutrition_mapping] to [mood_input]
 # 	@Parameters:

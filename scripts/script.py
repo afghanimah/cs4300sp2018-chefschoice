@@ -7,19 +7,16 @@ def get_syn(f):
     feelings = f
     file_obj = open("output.txt", "w")
     for i in range(0,len(feelings)):
-        print(i)
         try:
             newstr = str(feelings[i])
             page = urlopen('http://words.bighugelabs.com/api/2/0d152f7adb9f9d5812e0359248bf0e15/' + newstr + '/')
             page_content = page.read().decode("utf-8")
-            print(newstr)
             for line in page_content.splitlines():
                 split_line = line.split("|")
                 if (split_line[1] == "syn") or (split_line[1] == "sim"):
                     newstr += " " + split_line[2]
             file_obj.write(newstr + "\n")
         except:
-            print("FAIL " + newstr)
             pass
     file_obj.close()
 
