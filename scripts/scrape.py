@@ -9,6 +9,7 @@ ab = "0d152f7adb9f9d5812e0359248bf0e15"
 # Extracts list of feelings from WeFeelFine API: http://wefeelfine.org/api.html
 def get_feelings():
     #copy paste from ab's code
+    #outdated
 	file_object = open("../data/feelings.txt", "r")
 	lines = file_object.read().split('\n')
 	words = []
